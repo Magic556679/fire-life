@@ -1,7 +1,8 @@
+// import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
-  devtools: { enabled: true },
 
   modules: [
     '@nuxt/content',
@@ -10,11 +11,24 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/image',
     '@nuxt/icon',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
   ],
+  devtools: { enabled: true },
+
+  typescript: {
+    typeCheck: true,
+  },
+
+  css: ['~/assets/css/main.css'],
+
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
 
   ui: {
-    // 禁用字體載入
-    fonts: false
-  }
+    // Disable font loading
+    fonts: false,
+  },
 })
