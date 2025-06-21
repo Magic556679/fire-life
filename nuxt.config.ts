@@ -1,9 +1,7 @@
-// import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-05-15',
-
   modules: [
     '@nuxt/content',
     '@nuxt/ui',
@@ -15,20 +13,23 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
 
+  css: ['~/assets/css/main.css'],
+
+  ui: {
+    colorMode: false,
+  },
+  compatibilityDate: '2025-05-15',
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   typescript: {
     typeCheck: true,
   },
-
-  css: ['~/assets/css/main.css'],
 
   eslint: {
     config: {
       stylistic: true,
     },
-  },
-
-  ui: {
-    // Disable font loading
-    fonts: false,
   },
 })
