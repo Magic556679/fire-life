@@ -3,7 +3,9 @@
     <div class="max-w-8xl mx-auto">
       <div class="flex h-14 items-center justify-between px-6">
         <div>
-          <Icon name="logos:adroll" />
+          <NuxtLink to="/">
+            <Icon name="logos:adroll" />
+          </NuxtLink>
         </div>
         <div class="max-md:hidden">
           <ul class="flex gap-6">

@@ -1,18 +1,12 @@
 <template>
-  <div class="container mx-auto max-w-5xl pt-14">
-    <div class="grid grid-cols-none gap-2 lg:grid-cols-3">
-      <div
-        v-for="item in blogResponse.documents"
-        :key="item.id"
-        class="col-span-2 mt-10 px-4 lg:px-0"
-      >
-        <h2>{{ item.title }}</h2>
-        <div>
-          <h3>
-            {{ item.content }}
-          </h3>
-          <NuxtLink class="font-medium">Read more</NuxtLink>
-        </div>
+  <div class="container mx-auto pt-14 lg:max-w-5xl">
+    <div class="grid gap-2 lg:grid-cols-3">
+      <div class="col-span-2">
+        <BlogPost
+          v-for="item in blogResponse.documents"
+          :key="item.id"
+          :item="item"
+        />
       </div>
       <div class="mt-10 hidden lg:block">Recommended topics</div>
     </div>
