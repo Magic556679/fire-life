@@ -1,14 +1,19 @@
 <template>
-  <div class="container mx-auto pt-14 lg:max-w-5xl">
+  <div class="container mx-auto lg:max-w-5xl">
     <div class="grid gap-2 lg:grid-cols-3">
       <div class="col-span-2">
-        <BlogPost
-          v-for="item in blogResponse.documents"
-          :key="item.id"
-          :item="item"
-        />
+        <BlogPost v-for="item in postList" :key="item.id" :item="item" />
+        <div class="my-10 flex justify-center">
+          <UPagination
+            v-model:page="page"
+            :items-per-page="prePage"
+            :total="pageTotal"
+          />
+        </div>
       </div>
-      <div class="mt-10 hidden lg:block">Recommended topics</div>
+      <div class="mt-10 hidden px-7 lg:block">
+        <p>Recommended topics</p>
+      </div>
     </div>
   </div>
 </template>
@@ -57,5 +62,24 @@ function generateRandomBlogs(count = 5): BlogResponse {
   return { documents: blogs }
 }
 
-const blogResponse = generateRandomBlogs(5)
+const blogResponse = generateRandomBlogs(20)
+
+const page = ref(1)
+const prePage = 5
+const pageTotal = computed(() => {
+  return blogResponse.documents.length
+})
+
+const postList = computed(() => {
+  if (!blogResponse.documents.length) return
+
+  const end = page.value * prePage
+  const start = end - prePage
+
+  const result = blogResponse.documents.filter(
+    (_, index) => index >= start && index < end,
+  )
+
+  return result
+})
 </script>

@@ -1,9 +1,9 @@
 <template>
-  <div>Home</div>
+  <div>施工中...</div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  redirect: '/blog',
-})
+// definePageMeta({
+//   redirect: '/blog',
+// })
 </script>
