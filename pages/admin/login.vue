@@ -4,6 +4,13 @@
       <Icon name="logos:adroll" />
     </NuxtLink>
     <div class="p-10">
+      <!-- https://ui.nuxt.com/components/form -->
+      <!-- <UForm
+        :schema="schema"
+        :state="state"
+        class="space-y-4"
+        @submit="onSubmit"
+      > -->
       <UFormField label="帳號">
         <UInput
           id="username"
@@ -38,6 +45,7 @@
       <UButton color="secondary" class="mt-4 w-full text-center" :block="true">
         登入
       </UButton>
+      <!-- </UForm> -->
     </div>
   </div>
 </template>
