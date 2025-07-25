@@ -1,6 +1,54 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@theme {        
+  --color-orange-light: #ffcf99;
+  --color-orange-accent: #ffb07f;
+  --color-cream-peach: #fff8f1;
+}
+
 @theme container {
     --container-8xl: 90rem;
+}
+
+body {
+  @apply text-black;
+}
+
+
+h1 {
+    @apply text-4xl font-medium
+}
+
+h2 {
+    @apply text-3xl font-medium
+}
+
+h3 {
+    @apply text-2xl font-medium
+}
+
+h4 {
+    @apply text-xl font-medium
+}
+
+h5 {
+    @apply text-lg font-medium
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out both;
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

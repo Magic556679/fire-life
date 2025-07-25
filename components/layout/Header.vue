@@ -9,11 +9,17 @@
         </div>
         <div class="max-md:hidden">
           <ul class="flex gap-6">
-            <li class="flex items-center">
-              <NuxtLink to="/">Home</NuxtLink>
+            <li class="bg-mint-500 flex items-center">
+              <NuxtLink to="/service">服務項目</NuxtLink>
             </li>
             <li class="bg-mint-500 flex items-center">
-              <NuxtLink to="/blog">Blog</NuxtLink>
+              <NuxtLink to="/process">合作流程</NuxtLink>
+            </li>
+            <li class="bg-mint-500 flex items-center">
+              <NuxtLink to="/blog">文章列表</NuxtLink>
+            </li>
+            <li class="bg-mint-500 flex items-center">
+              <NuxtLink to="/contact">聯絡我們</NuxtLink>
             </li>
           </ul>
         </div>
@@ -23,7 +29,7 @@
           </button>
         </div>
       </div>
-      <LayoutMoblieMenu v-if="isMenu" :toggle-menu="toggleMenu" />
+      <LayoutMobileMenu v-if="isMenu" :toggle-menu="toggleMenu" />
     </div>
   </header>
 </template>
@@ -33,6 +39,5 @@ const isMenu = ref(false)
 
 const toggleMenu = (): void => {
   isMenu.value = !isMenu.value
-  console.log('isToggle', isMenu.value)
 }
 </script>

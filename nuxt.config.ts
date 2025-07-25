@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/eslint',
   ],
+
   devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
@@ -18,7 +19,9 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
+
   compatibilityDate: '2025-05-15',
+
   vite: {
     plugins: [tailwindcss()],
   },

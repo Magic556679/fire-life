@@ -1,14 +1,13 @@
 <template>
   <div class="mt-10 px-4 lg:px-0">
-    <h2>{{ item.title }}</h2>
-    <div>
-      <h3>
-        {{ item.content }}
-      </h3>
-      <NuxtLink :to="`/blog/${item.id}`" class="font-medium">
-        Read more
-      </NuxtLink>
-    </div>
+    <NuxtLink :to="`/blog/${item.id}`" class="font-medium">
+      <h3 class="text-green-500">{{ item.title }}</h3>
+      <div>
+        <p>
+          {{ item.content }}
+        </p>
+      </div>
+    </NuxtLink>
   </div>
 </template>
 

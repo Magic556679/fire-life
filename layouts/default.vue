@@ -1,8 +1,14 @@
 <template>
-  <div>
+  <div class="flex min-h-screen flex-col">
     <LayoutHeader />
-    <main>
+    <LayoutBanner v-if="route.path === '/'" />
+    <main class="flex-1 pt-14">
       <slot />
     </main>
+    <LayoutFooter />
   </div>
 </template>
+
+<script setup lang="ts">
+const route = useRoute()
+</script>
