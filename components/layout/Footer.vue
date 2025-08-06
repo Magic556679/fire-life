@@ -5,6 +5,9 @@
         <NuxtLink to="/Service">服務項目</NuxtLink>
       </li>
       <li class="bg-mint-500 flex items-center">
+        <NuxtLink to="/process">合作流程</NuxtLink>
+      </li>
+      <li class="bg-mint-500 flex items-center">
         <NuxtLink to="/blog">文章列表</NuxtLink>
       </li>
     </ul>
