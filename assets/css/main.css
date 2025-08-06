@@ -16,24 +16,26 @@ body {
 }
 
 
-h1 {
-    @apply text-4xl font-medium
-}
+@layer base {
+  h1 {
+      @apply text-4xl font-medium
+  }
 
-h2 {
-    @apply text-3xl font-medium
-}
+  h2 {
+      @apply text-3xl font-medium
+  }
 
-h3 {
-    @apply text-2xl font-medium
-}
+  h3 {
+      @apply text-2xl font-medium
+  }
 
-h4 {
-    @apply text-xl font-medium
-}
+  h4 {
+      @apply text-xl font-medium
+  }
 
-h5 {
-    @apply text-lg font-medium
+  h5 {
+      @apply text-lg font-medium
+  }
 }
 
 @layer utilities {

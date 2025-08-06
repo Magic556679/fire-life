@@ -24,6 +24,8 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    // 解決切換頁面 svg 抓不到
+    assetsInclude: ['**/*.svg'],
   },
 
   typescript: {
