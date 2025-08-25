@@ -2,7 +2,7 @@
   <div class="flex min-h-screen flex-col">
     <LayoutHeader />
     <LayoutBanner v-if="route.path === '/'" />
-    <main class="flex-1 pt-14">
+    <main class="bg-cream-peach flex-1 pt-14">
       <slot />
     </main>
     <LayoutFooter />

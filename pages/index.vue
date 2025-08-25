@@ -2,48 +2,7 @@
   <div class="bg-cream-peach -mt-16 px-4">
     <section class="pt-10 text-center">
       <h2 class="tracking-widest">服務項目</h2>
-      <div class="mt-8 flex flex-wrap justify-center gap-4 md:flex-nowrap">
-        <div class="w-full rounded-xl bg-white px-5 py-10 md:max-w-sm">
-          <h3>網站架設</h3>
-          <div>
-            <img
-              src="/images/service-3.svg"
-              alt="網站架設"
-              class="mx-auto mt-2 h-[200px] w-[200px] rounded-md object-contain"
-            />
-          </div>
-          <p class="mt-2">
-            使用獨立
-            VPS，不跟其他人共享資源，提供穩定、快速的網站架設服務，支援各種網站需求。
-          </p>
-        </div>
-        <div class="w-full rounded-xl bg-white px-5 py-10 md:max-w-sm">
-          <h3>形象網站</h3>
-          <div>
-            <img
-              src="/images/service-2.svg"
-              alt="形象網站"
-              class="mx-auto mt-2 h-[200px] w-[200px] rounded-md object-contain"
-            />
-          </div>
-          <p class="mt-2">
-            使用 Nuxt 前端技術，打造現代化、響應式的形象網站，提升品牌形象。
-          </p>
-        </div>
-        <div class="w-full rounded-xl bg-white px-5 py-10 md:max-w-sm">
-          <h3>部落格</h3>
-          <div>
-            <img
-              src="/images/service-1.svg"
-              alt="形象網站"
-              class="mx-auto mt-2 h-[200px] w-[200px] rounded-md object-contain"
-            />
-          </div>
-          <p class="mt-2">
-            擁有完整的部落格系統，支援文章發佈與搜尋功能，讓你輕鬆分享內容。
-          </p>
-        </div>
-      </div>
+      <sections-services-section />
     </section>
     <section class="container mx-auto mt-40 text-center lg:max-w-5xl">
       <div class="flex flex-col justify-around lg:flex-row">
@@ -88,9 +47,8 @@
         </div>
       </div>
     </section>
-    <!--  bg-gradient-to-b from-white -->
     <section
-      class="container mx-auto mt-40 rounded-t-xl bg-white px-5 py-10 text-center"
+      class="container mx-auto mt-40 mb-10 rounded-xl bg-white px-5 py-10 text-center"
     >
       <h2 class="text-3xl font-bold tracking-widest">合作流程</h2>
       <p class="mx-auto mt-2 max-w-xl text-gray-500">

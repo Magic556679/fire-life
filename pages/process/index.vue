@@ -1,64 +1,108 @@
 <template>
-  <div class="container mx-auto mt-40 text-center lg:max-w-5xl">
-    <h2 class="text-3xl font-bold tracking-widest">合作流程</h2>
-    <p class="mt-2 text-gray-500">讓你清楚每一步怎麼走，安心把網站交給我</p>
+  <div class="container mx-auto px-6 lg:max-w-5xl">
+    <h2
+      class="my-10 text-center text-3xl font-bold tracking-wide text-gray-900"
+    >
+      合作流程
+    </h2>
 
-    <div class="mt-12 space-y-12 text-left lg:px-20">
-      <div>
-        <h3 class="text-xl font-semibold text-gray-800">🔍 前置作業</h3>
-        <p class="mt-1 text-sm text-gray-600">雙方討論需求與風格，釐清方向</p>
-        <ul class="mt-2 list-inside list-disc leading-relaxed text-gray-700">
-          <li>需求確認與網站目標</li>
-          <li>預算範圍與付款方式</li>
-          <li>網站風格與設計討論</li>
-          <li>是否有現有素材可使用</li>
-          <li>預估製作時程與交期</li>
-          <li>提出報價並簽訂合約</li>
-          <li>支付 30% 訂金以啟動專案</li>
-        </ul>
-      </div>
+    <div class="mb-6 grid gap-4 lg:grid-cols-2">
+      <div
+        v-for="(item, index) in steps"
+        :key="index"
+        :class="['flex gap-3', lgGridPosition(index)]"
+      >
+        <div class="relative flex flex-col items-center gap-1.5">
+          <span
+            class="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-orange-500 text-white"
+          >
+            <Icon :name="item.icon" />
+          </span>
+          <div
+            v-if="index !== steps.length - 1"
+            class="w-0.5 flex-1 bg-gray-300"
+          ></div>
+        </div>
 
-      <USeparator />
-
-      <div>
-        <h3 class="text-xl font-semibold text-gray-800">🛠 網站建置</h3>
-        <p class="mt-1 text-sm text-gray-600">開始進行網站開發與內容建置</p>
-        <ul class="mt-2 list-inside list-disc leading-relaxed text-gray-700">
-          <li>網站排版初步確認</li>
-          <li>配色與字型選擇建議</li>
-          <li>網站必要帳號申請與設置（如網域、GA、Firebase）</li>
-        </ul>
-      </div>
-
-      <USeparator />
-
-      <div>
-        <h3 class="text-xl font-semibold text-gray-800">🧪 網站展示與測試</h3>
-        <p class="mt-1 text-sm text-gray-600">
-          讓你看到網站雛型，進行調整與確認
-        </p>
-        <ul class="mt-2 list-inside list-disc leading-relaxed text-gray-700">
-          <li>畫面與內容微調</li>
-          <li>各項功能與流程測試</li>
-        </ul>
-      </div>
-
-      <USeparator />
-
-      <div class="pb-10">
-        <h3 class="text-xl font-semibold text-gray-800">🚀 正式上線</h3>
-        <p class="mt-1 text-sm text-gray-600">確認沒問題後上線交付，完成合作</p>
-        <ul class="mt-2 list-inside list-disc leading-relaxed text-gray-700">
-          <li>網站正式上線部署</li>
-          <li>簡單教學與操作說明</li>
-          <li>交付相關帳號與權限</li>
-          <li>支付尾款</li>
-        </ul>
+        <div class="mt-1.5 w-full pb-6">
+          <div class="text-sm font-medium text-gray-900">
+            {{ index + 1 }}. {{ item.title }}
+          </div>
+          <p class="mt-1 text-sm leading-relaxed text-gray-700">
+            {{ item.description }}
+          </p>
+          <ul
+            v-if="item.tasks"
+            class="mt-2 list-inside list-disc text-sm leading-relaxed text-gray-700"
+          >
+            <li v-for="(task, tIndex) in item.tasks" :key="tIndex">
+              {{ task }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const steps = [
+  {
+    title: '前置作業',
+    description: '雙方深入討論需求與網站風格，確立合作目標',
+    icon: 'i-lucide:rocket',
+    tasks: [
+      '需求確認與網站目標',
+      '預算範圍及付款條件',
+      '網站風格與視覺設計討論',
+      '報價與簽訂合約',
+      '支付 40% 訂金以啟動專案',
+    ],
+  },
+  {
+    title: '設計確認',
+    description: '雙方確認網站設計與風格',
+    icon: 'i-lucide-palette',
+    tasks: [
+      '提供 Figma Wireframe 確認畫面',
+      '畫面設計與內容調整',
+      '素材提供',
+      '開始進行網站開發與',
+    ],
+  },
+  {
+    title: '網站展示與測試',
+    description: '展示網站，進行功能測試與內容調整',
+    icon: 'i-lucide-palette',
+    tasks: ['內容調整', '網站功能測試'],
+  },
+  {
+    title: '網站建置',
+    description: '網站驗收後，進行網站部署',
+    icon: 'i-lucide-code',
+    tasks: ['網域購買', '虛擬主機架設', '帳號申請與設定(網域、GA、Firebase)'],
+  },
+  {
+    title: '正式上線',
+    description: '完成專案交付',
+    icon: 'i-lucide-check-circle',
+    tasks: [
+      '網站正式上線',
+      '提供簡易教學與操作說明',
+      '交付網站相關帳號與管理權限',
+      '支付專案尾款',
+    ],
+  },
+]
 
-<style scoped></style>
+const lgGridPosition = (index: number) => {
+  const positions = [
+    'lg:row-start-1 lg:col-start-1',
+    'lg:row-start-2 lg:col-start-1',
+    'lg:row-start-1 lg:col-start-2',
+    'lg:row-start-2 lg:col-start-2',
+    'lg:row-start-3 lg:col-start-2',
+  ]
+  return positions[index] || ''
+}
+</script>
