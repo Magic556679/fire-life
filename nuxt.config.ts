@@ -2,6 +2,12 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    },
+  },
+
   modules: [
     '@nuxt/content',
     '@nuxt/ui',

@@ -4,7 +4,10 @@
       <div class="flex h-14 items-center justify-between px-6">
         <div>
           <NuxtLink to="/">
-            <Icon name="logos:adroll" />
+            <!-- <Icon name="logos:adroll" /> -->
+            <div class="w-12">
+              <img src="/images/logo.png" alt="logo" />
+            </div>
           </NuxtLink>
         </div>
         <div class="max-md:hidden">
@@ -12,15 +15,15 @@
             <li class="bg-mint-500 flex items-center">
               <NuxtLink to="/service">服務項目</NuxtLink>
             </li>
-            <li class="bg-mint-500 flex items-center">
+            <!-- <li class="bg-mint-500 flex items-center">
               <NuxtLink to="/about">關於我</NuxtLink>
-            </li>
+            </li> -->
             <li class="bg-mint-500 flex items-center">
               <NuxtLink to="/process">合作流程</NuxtLink>
             </li>
-            <li class="bg-mint-500 flex items-center">
+            <!-- <li class="bg-mint-500 flex items-center">
               <NuxtLink to="/blog">文章列表</NuxtLink>
-            </li>
+            </li> -->
             <li class="bg-mint-500 flex items-center">
               <NuxtLink to="/contact">聯絡資訊</NuxtLink>
             </li>

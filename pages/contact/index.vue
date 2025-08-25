@@ -1,8 +1,6 @@
 <template>
   <div class="container mx-auto px-6 lg:max-w-5xl">
-    <h2 class="my-10 text-center text-2xl font-bold tracking-widest">
-      聯絡資訊
-    </h2>
+    <h2 class="my-10 text-center font-bold tracking-widest">聯絡資訊</h2>
 
     <div class="space-y-6 rounded-2xl">
       <p class="text-center text-gray-600">
