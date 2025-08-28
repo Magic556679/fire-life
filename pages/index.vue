@@ -80,3 +80,33 @@
     </section>
   </div>
 </template>
+
+<script lang="ts" setup>
+useHead({
+  title: 'Fire Life - 網站架設服務',
+  htmlAttrs: {
+    lang: 'zh-TW',
+  },
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Fire Life 提供個人與企業形象網站架設服務，打造專屬網站，提升品牌形象。',
+    },
+    { name: 'keywords', content: '個人形象網站, 企業形象網站, 接案, 網站架設' },
+
+    { property: 'og:title', content: 'Fire Life - 網站架設服務' },
+    {
+      property: 'og:description',
+      content: '專業網站架設服務，為個人與企業打造專屬網站，提升品牌形象。',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://firelifedev.com/' },
+    {
+      property: 'og:image',
+      content: 'https://firelifedev.com/images/logo.png',
+    },
+  ],
+  link: [{ rel: 'canonical', href: 'https://firelifedev.com/' }],
+})
+</script>

@@ -40,5 +40,32 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+useHead({
+  title: 'Fire Life - 聯絡資訊',
+  htmlAttrs: { lang: 'zh-TW' },
+  meta: [
+    {
+      name: 'description',
+      content:
+        '聯絡 Fire Life，討論個人或企業網站需求，快速獲取專業網站架設建議與報價。',
+    },
+    { name: 'keywords', content: '聯絡, 網站諮詢, 接案, 網站架設, 前端開發' },
+
+    { property: 'og:title', content: 'Fire Life - 聯絡資訊' },
+    {
+      property: 'og:description',
+      content:
+        '聯絡 Fire Life，獲取專業網站架設建議與報價，開始打造您的品牌網站。',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://firelifedev.com/contact' },
+    {
+      property: 'og:image',
+      content: 'https://firelifedev.com/images/logo.png',
+    },
+  ],
+  link: [{ rel: 'canonical', href: 'https://firelifedev.com/contact' }],
+})
+
 const imgSrc = ref('/images/contact.png')
 </script>

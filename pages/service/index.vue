@@ -72,6 +72,36 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: 'Fire Life - 服務項目',
+  htmlAttrs: { lang: 'zh-TW' },
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Fire Life 提供個人與企業網站架設服務，包含設計、前端開發與網站維護，打造專屬品牌網站。',
+    },
+    {
+      name: 'keywords',
+      content: '網站架設, 個人網站, 企業網站, 前端開發, 接案',
+    },
+
+    { property: 'og:title', content: 'Fire Life - 服務項目' },
+    {
+      property: 'og:description',
+      content:
+        '專業網站架設服務，包括設計、前端開發與網站維護，打造專屬品牌網站。',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://firelifedev.com/service' },
+    {
+      property: 'og:image',
+      content: 'https://firelifedev.com/images/logo.png',
+    },
+  ],
+  link: [{ rel: 'canonical', href: 'https://firelifedev.com/service' }],
+})
+</script>
 
 <style scoped></style>

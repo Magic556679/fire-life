@@ -46,6 +46,36 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Fire Life - 合作流程',
+  htmlAttrs: { lang: 'zh-TW' },
+  meta: [
+    {
+      name: 'description',
+      content:
+        '了解 Fire Life 的網站合作流程，從需求討論到網站上線，全程透明、專業、高效率。',
+    },
+    {
+      name: 'keywords',
+      content: '合作流程, 網站架設, 接案流程, 前端開發, 品牌網站',
+    },
+
+    { property: 'og:title', content: 'Fire Life - 合作流程' },
+    {
+      property: 'og:description',
+      content:
+        '從需求討論到網站上線，完整呈現 Fire Life 的網站合作流程，專業、高效率。',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://firelifedev.com/process' },
+    {
+      property: 'og:image',
+      content: 'https://firelifedev.com/images/logo.png',
+    },
+  ],
+  link: [{ rel: 'canonical', href: 'https://firelifedev.com/process' }],
+})
+
 const steps = [
   {
     title: '前置作業',
