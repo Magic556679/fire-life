@@ -4,7 +4,6 @@
       <div class="flex h-14 items-center justify-between px-6">
         <div>
           <NuxtLink to="/">
-            <!-- <Icon name="logos:adroll" /> -->
             <div class="w-12">
               <img src="/images/logo.png" alt="logo" />
             </div>
@@ -12,6 +11,9 @@
         </div>
         <div class="max-md:hidden">
           <ul class="flex gap-6">
+            <li class="bg-mint-500 flex items-center">
+              <NuxtLink to="/demo/personal">作品集</NuxtLink>
+            </li>
             <li class="bg-mint-500 flex items-center">
               <NuxtLink to="/service">服務項目</NuxtLink>
             </li>

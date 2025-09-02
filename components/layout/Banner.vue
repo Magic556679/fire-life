@@ -3,7 +3,7 @@
     class="from-orange-light bg-cream-peach flex h-screen flex-col justify-center space-y-4 bg-gradient-to-b text-center"
   >
     <h1 class="text-4xl font-bold tracking-widest text-gray-900 lg:text-5xl">
-      打造你的專屬的個人網站
+      打造你專屬的個人網站
     </h1>
     <h3 class="text-lg text-gray-900 lg:text-xl">
       你建立網站的好夥伴，創造一個有故事的網站。

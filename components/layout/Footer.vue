@@ -2,6 +2,9 @@
   <div class="border-t border-gray-200 py-4 text-center">
     <ul class="flex justify-center gap-6">
       <li class="bg-mint-500 flex items-center">
+        <NuxtLink to="/demo/personal">作品集</NuxtLink>
+      </li>
+      <li class="bg-mint-500 flex items-center">
         <NuxtLink to="/Service">服務項目</NuxtLink>
       </li>
       <!-- <li class="bg-mint-500 flex items-center">
