@@ -183,7 +183,7 @@ onMounted(() => {
 ::v-deep(.swiper-pagination-bullet-active) {
   width: 20px;
   height: 20px;
-  background: url('/images/personal/island.png') no-repeat center;
+  background: url('/images/personal/Island.png') no-repeat center;
   background-size: contain;
   border-radius: 0;
 }
