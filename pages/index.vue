@@ -104,7 +104,7 @@ useHead({
     { property: 'og:url', content: 'https://firelifedev.com/' },
     {
       property: 'og:image',
-      content: 'https://firelifedev.com/images/logo.png',
+      content: 'https://firelifedev.com/images/firelife-homepage-og.png',
     },
   ],
   link: [{ rel: 'canonical', href: 'https://firelifedev.com/' }],

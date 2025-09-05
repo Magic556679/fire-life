@@ -207,13 +207,13 @@ useHead({
         '探索數位遊牧的生活型態，學習必要技能，打造專屬於你的遠距工作與自由接案之路。',
     },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://firelifedev.com/digital-nomad' },
+    { property: 'og:url', content: 'https://firelifedev.com/demo/personal' },
     {
       property: 'og:image',
-      content: 'https://firelifedev.com/images/logo.png',
+      content: 'https://firelifedev.com/images/personal/digital-nomad.png',
     },
   ],
-  link: [{ rel: 'canonical', href: 'https://firelifedev.com/digital-nomad' }],
+  link: [{ rel: 'canonical', href: 'https://firelifedev.com/demo/personal' }],
 })
 
 const benefits = [
