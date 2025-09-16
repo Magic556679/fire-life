@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxt/eslint',
+    '@pinia/nuxt',
   ],
 
   devtools: { enabled: true },
