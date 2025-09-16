@@ -1,26 +1,25 @@
 <template>
   <div class="mt-[10%] flex flex-col items-center justify-center">
     <NuxtLink to="/">
-      <Icon name="logos:adroll" />
+      <div class="w-12">
+        <img src="/images/logo.png" alt="logo" />
+      </div>
     </NuxtLink>
     <div class="p-10">
-      <!-- https://ui.nuxt.com/components/form -->
-      <!-- <UForm
-        :schema="schema"
-        :state="state"
-        class="space-y-4"
-        @submit="onSubmit"
-      > -->
-      <UFormField label="帳號">
+      <UFormField label="信箱">
         <UInput
-          id="username"
-          v-model="username"
+          id="email"
+          v-model="email"
           class="w-full"
           type="text"
-          placeholder="請輸入帳號"
+          placeholder="請輸入信箱"
         />
       </UFormField>
-      <UFormField label="密碼" class="mt-4">
+      <p class="my-1 h-4 text-sm text-red-500">
+        {{ errors.email }}
+      </p>
+
+      <UFormField label="密碼">
         <UInput
           id="password"
           v-model="password"
@@ -41,23 +40,78 @@
             />
           </template>
         </UInput>
+        <p class="my-1 h-4 text-sm text-red-500">
+          {{ errors.password }}
+        </p>
       </UFormField>
-      <UButton color="secondary" class="mt-4 w-full text-center" :block="true">
+      <UButton
+        color="secondary"
+        class="mt-1 w-full text-center"
+        :block="true"
+        @click="login"
+      >
         登入
       </UButton>
-      <!-- </UForm> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { AxiosError } from 'axios'
+import { loginSchema } from '~/composables/useLoginValidator'
+import { z } from 'zod'
+
 definePageMeta({
   layout: 'admin',
 })
 
-const username = ref('')
+const email = ref('')
 const password = ref('')
 const show = ref(false)
-</script>
+const { $api } = useNuxtApp()
+const auth = useAuthStore()
 
-<style scoped></style>
+const onSubmit = async () => {
+  try {
+    const res = await $api.post('/login', {
+      email: email.value,
+      password: password.value,
+    })
+
+    auth.setUser(res.data.user)
+
+    navigateTo('/admin')
+  } catch (err) {
+    const error = err as AxiosError<{ message?: string }>
+    console.error('登入失敗:', error.response?.data?.message || error.message)
+  }
+}
+
+const errors = reactive<{ email?: string; password?: string }>({})
+
+const login = () => {
+  errors.email = undefined
+  errors.password = undefined
+
+  const result = loginSchema.safeParse({
+    email: email.value,
+    password: password.value,
+  })
+
+  if (!result.success) {
+    const tree = z.treeifyError(result.error)
+
+    if (tree.properties?.email?.errors) {
+      errors.email = tree.properties.email.errors[0]
+    }
+
+    if (tree.properties?.password?.errors) {
+      errors.password = tree.properties.password.errors[0]
+    }
+
+    console.log(tree.properties)
+  }
+
+  onSubmit()
+}
+</script>
