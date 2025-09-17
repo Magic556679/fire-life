@@ -16,5 +16,8 @@ export default withNuxt({
     ],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': 'off',
+    '@stylistic/arrow-parens': ['error', 'as-needed'],
+    '@stylistic/member-delimiter-style': 'off',
+    'prettier/prettier': 'error',
   },
 })
