@@ -67,7 +67,7 @@ import { loginSchema } from '~/composables/useLoginValidator'
 import { z } from 'zod'
 
 definePageMeta({
-  layout: 'admin',
+  layout: 'admin-login',
 })
 
 const email = ref('')

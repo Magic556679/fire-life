@@ -31,7 +31,9 @@ const items = ref<NavigationMenuItem[][]>([
         {
           label: '文章列表',
           icon: 'i-lucide-list',
-          to: '/admin/blog',
+          to: '/admin/posts',
+          active: true,
+          defaultOpen: true,
         },
         {
           label: '新增文章',

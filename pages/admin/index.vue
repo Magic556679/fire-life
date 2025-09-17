@@ -1,11 +1,5 @@
 <template>
-  <div class="flex">
-    <AdminSidebar />
-    <div class="w-full">
-      <AdminHeader />
-      <AdminMain />
-    </div>
-  </div>
+  <AdminMain />
 </template>
 
 <script setup lang="ts">
