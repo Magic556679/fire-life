@@ -1,5 +1,5 @@
 import axios from 'axios'
-import storage from '@/utils/storage'
+import { useAuthStore } from '~/stores/auth'
 
 const basePath = import.meta.env.VITE_SERVER_BASE_API
 const localhostPath = import.meta.env.VITE_SERVER_LOCALHOST
@@ -13,10 +13,13 @@ const service = axios.create({
 })
 service.interceptors.request.use(
   config => {
-    const token = storage.getToken()
+    const auth = useAuthStore()
+    const token = auth.user?.token
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
+
     return config
   },
   error => {
@@ -26,25 +29,9 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
-    const headers = response.headers
-
-    const token = headers['refresh-token']
-
-    if (token) {
-      storage.setToken(token)
-    }
-
     return response
   },
   error => {
-    const headers = error.response.headers
-
-    const token = headers['refresh-token']
-
-    if (token) {
-      storage.setToken(token)
-    }
-
     return Promise.reject(error)
   },
 )
