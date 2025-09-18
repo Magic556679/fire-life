@@ -7,6 +7,13 @@
   --color-cream-peach: #fff8f1;
 
   --color-person-key: #D0F2FF;
+
+/* tiptap Basic style */
+  --purple-light: rgba(88, 5, 255, .05);
+  --black: #2e2b29;
+  --white: #ffffff;
+  --purple: #6a00f5;
+  --purple-contrast: #5800cc;
 }
 
 @theme container {
@@ -57,26 +64,6 @@ body {
   }
 }
 
-/* .personal-heading-highlight {
-  @apply mx-auto mb-10 block w-fit
-         bg-gradient-to-r from-sky-300/90 to-white
-         bg-[length:100%_50%] bg-bottom bg-no-repeat
-         text-2xl md:text-3xl
-         font-bold tracking-widest;
-} */
-
-/* .personal-heading-highlight {
-  @apply mx-auto mb-10 block w-fit
-         bg-gradient-to-r from-sky-300/90 to-white
-         bg-[length:100%_50%] bg-bottom bg-no-repeat
-         text-2xl md:text-3xl
-         font-bold tracking-widest;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  display: inline; 
-  padding: 0 0.25em;
-} */
-
 .personal-heading-highlight {
   @apply mx-auto mb-10 w-fit
          bg-gradient-to-r from-sky-300/90 to-white
@@ -84,4 +71,3 @@ body {
          text-2xl md:text-3xl p-1
          font-bold tracking-widest inline;
 }
-
