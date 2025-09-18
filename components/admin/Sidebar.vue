@@ -27,18 +27,18 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: '內容管理',
       icon: 'i-lucide-file-text',
+      defaultOpen: true,
       children: [
         {
           label: '文章列表',
           icon: 'i-lucide-list',
           to: '/admin/posts',
-          active: true,
-          defaultOpen: true,
+          // active: true,
         },
         {
           label: '新增文章',
           icon: 'i-lucide-file-plus',
-          to: '/admin/blog/create',
+          to: '/admin/posts/create',
         },
         {
           label: '作品集列表',

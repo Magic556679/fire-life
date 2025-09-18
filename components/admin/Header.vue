@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full justify-between border-b border-gray-200 p-4">
     <UBreadcrumb :items="items" />
-    <span @click="submitLogout">登出</span>
+    <span @click="submitLogout" class="cursor-pointer">登出</span>
   </div>
 </template>
 
