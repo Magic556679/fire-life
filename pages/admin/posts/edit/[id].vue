@@ -1,10 +1,10 @@
 <template>
-  <div class="p-6">
+  <div class="container mx-auto pt-14">
     <div class="flex justify-between">
-      <h1 class="mb-4 text-2xl font-bold">新增文章</h1>
+      <h1 class="mb-4 text-2xl font-bold">編輯文章</h1>
 
       <div>
-        <UButton @click="submitArticle">發佈文章</UButton>
+        <UButton @click="submitArticle">更新文章</UButton>
       </div>
     </div>
 
@@ -14,20 +14,18 @@
       placeholder="文章標題"
       class="mb-4 w-full rounded border border-gray-300 p-2"
     />
-
     <input
       v-model="slug"
       type="text"
-      placeholder="自訂網址 (slug)"
+      placeholder="文章網址 Slug (選填)"
       class="mb-4 w-full rounded border border-gray-300 p-2"
     />
-
-    <textarea
+    <input
       v-model="metaDescription"
-      placeholder="Meta Description"
+      type="text"
+      placeholder="Meta Description (選填)"
       class="mb-4 w-full rounded border border-gray-300 p-2"
-      rows="3"
-    ></textarea>
+    />
 
     <!-- 做成元件 -->
     <UModal v-model:open="showModal" title="設定圖片資訊">
@@ -203,16 +201,14 @@
       </div>
       <editor-content :editor="editor" class="" />
     </div>
-
-    <!-- <div v-html="articleContent" class="tiptap"></div> -->
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, onBeforeUnmount } from 'vue'
+<script setup lang="ts">
 import { EditorContent, useEditor } from '@tiptap/vue-3'
-import { createPost } from '~/api/posts/index'
+import { getPost, updatePost } from '~/api/posts/index'
 import { uploadImage } from '~/api/upload/index'
+import type { Post, ApiResponse } from '~/api/posts/types'
 
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
@@ -223,8 +219,15 @@ import css from 'highlight.js/lib/languages/css'
 
 definePageMeta({
   layout: 'admin',
-  middleware: 'auth',
 })
+
+const route = useRoute()
+const id = Number(route.params.id)
+
+const { data, pending, error, refresh } = useAsyncData<ApiResponse<Post>>(
+  'post',
+  () => getPost(id),
+)
 
 const lowlight = createLowlight(all)
 
@@ -247,37 +250,7 @@ const editor = useEditor({
     CodeBlockLowlight.configure({ lowlight }),
     Image,
   ],
-  content: `
-        <h2>
-          Hi there,
-        </h2>
-        <p>
-          this is a <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-        </p>
-        <ul>
-          <li>
-            That’s a bullet list with one …
-          </li>
-          <li>
-            … or two list items.
-          </li>
-        </ul>
-        <p>
-          Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-        </p>
-
-        <pre><code class="language-css">body {
-  display: none;
-}</code></pre>
-        <p>
-          I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-        </p>
-        <blockquote>
-          Wow, that’s amazing. Good work, boy! 👏
-          <br />
-          — Mom
-        </blockquote>
-      `,
+  content: '',
 })
 
 function setLink() {
@@ -362,10 +335,10 @@ function confirmImage() {
 
 async function submitArticle() {
   try {
-    const { data, status } = await createPost({
+    const { data, status } = await updatePost(id, {
       title: title.value,
       slug: slug.value,
-      metaDescription: metaDescription.value,
+      meta_description: metaDescription.value,
       content: editor.value?.getHTML() || '',
     })
 
@@ -378,11 +351,21 @@ async function submitArticle() {
   }
 }
 
+watchEffect(async () => {
+  if (data.value?.data?.content && editor.value) {
+    await nextTick()
+    editor.value.commands.setContent(data.value.data.content)
+    console.log('data', data.value)
+    title.value = data.value.data.title
+    slug.value = data.value.data.slug || ''
+    metaDescription.value = data.value.data.meta_description || ''
+  }
+})
+
 onBeforeUnmount(() => {
   editor.value?.destroy()
 })
 </script>
-
 <style lang="scss" scoped>
 /* Basic editor styles */
 ::v-deep(.tiptap) {
