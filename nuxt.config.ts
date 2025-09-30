@@ -43,4 +43,9 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+
+  routeRules: {
+    // admin 下的所有頁面不做 SSR
+    '/admin/**': { ssr: false },
+  },
 })
