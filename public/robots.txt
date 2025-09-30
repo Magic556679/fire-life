@@ -1,2 +1,4 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Disallow: /admin
+Allow: /
+Sitemap: https://firelifedev.com/sitemap.xml
