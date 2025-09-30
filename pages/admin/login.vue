@@ -59,8 +59,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
 import type { AxiosError } from 'axios'
 import { login } from '~/api/auth/login'
 import { loginSchema } from '~/composables/useLoginValidator'
@@ -68,6 +66,7 @@ import { z } from 'zod'
 
 definePageMeta({
   layout: 'admin-login',
+  middleware: 'guest',
 })
 
 const email = ref('')
@@ -114,27 +113,8 @@ const handleLoginForm = () => {
     if (tree.properties?.password?.errors) {
       errors.password = tree.properties.password.errors[0]
     }
-
-    console.log(tree.properties)
   }
 
   submitLogin()
 }
-
-const router = useRouter()
-
-onMounted(() => {
-  if (auth.isLoggedIn) {
-    router.replace('/admin')
-  }
-})
-
-watch(
-  () => auth.isLoggedIn,
-  loggedIn => {
-    if (loggedIn) {
-      router.replace('/admin')
-    }
-  },
-)
 </script>
