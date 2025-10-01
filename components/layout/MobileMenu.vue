@@ -11,16 +11,16 @@
       </div>
       <nav>
         <ul class="px-4">
-          <li class="bg-mint-500 flex items-center">
+          <li class="flex items-center">
             <NuxtLink to="/demo/personal">作品集</NuxtLink>
           </li>
-          <li class="bg-mint-500 flex items-center">
+          <li class="flex items-center">
             <NuxtLink to="/service">服務項目</NuxtLink>
           </li>
-          <li class="bg-mint-500 flex items-center">
+          <li class="flex items-center">
             <NuxtLink to="/process">合作流程</NuxtLink>
           </li>
-          <li class="bg-mint-500 flex items-center">
+          <li class="flex items-center">
             <NuxtLink to="/contact">聯絡資訊</NuxtLink>
           </li>
         </ul>

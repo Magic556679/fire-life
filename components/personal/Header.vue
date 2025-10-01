@@ -9,13 +9,13 @@
         </div>
         <div class="max-md:hidden">
           <ul class="flex gap-6">
-            <li class="bg-mint-500 flex cursor-pointer items-center">
+            <li class="flex cursor-pointer items-center">
               <span>關於我</span>
             </li>
-            <li class="bg-mint-500 flex cursor-pointer items-center">
+            <li class="flex cursor-pointer items-center">
               <span>部落格</span>
             </li>
-            <li class="bg-mint-500 flex cursor-pointer items-center">
+            <li class="flex cursor-pointer items-center">
               <NuxtLink to="/contact">聯絡資訊</NuxtLink>
             </li>
           </ul>
