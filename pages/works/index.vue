@@ -85,17 +85,11 @@ const demos = [
     img: '/images/personal/digital-nomad.png',
     link: '/demo/personal',
   },
-  //   {
-  //     title: '企業官網首頁',
-  //     desc: '專業形象與服務導向的企業網站設計。',
-  //     img: '/images/demo/corporate.jpg',
-  //     link: '/demo/corporate',
-  //   },
-  //   {
-  //     title: '個人品牌首頁',
-  //     desc: '專屬於個人的品牌展示與履歷網站。',
-  //     img: '/images/demo/personal.jpg',
-  //     link: '/demo/personal',
-  //   },
+  {
+    title: '心理諮商所首頁',
+    desc: '心理諮商所官網範例。',
+    img: 'https://cdn.firelifedev.com/counseling/counselingOgImage%20.png',
+    link: '/demo/counseling',
+  },
 ]
 </script>
