@@ -257,7 +257,7 @@ useHead({
         '趴趴熊心理諮商所提供專業心理諮商，陪伴你走過焦慮、壓力與情緒低落，找回內心的平衡與安定。',
     },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://你的網站網址.com/counseling' },
+    { property: 'og:url', content: 'https://firelifedev.com/demo/counseling' },
     {
       property: 'og:image',
       content:
