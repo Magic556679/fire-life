@@ -195,6 +195,43 @@ definePageMeta({
   layout: 'gym',
 })
 
+useHead({
+  title: 'Fire Life - Balance GYM 健身房形象網站',
+  htmlAttrs: {
+    lang: 'zh-TW',
+  },
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Balance GYM 不只是訓練中心，我們結合專業教練指導與健康飲食，幫助你達到體態與生活的平衡。',
+    },
+    {
+      name: 'keywords',
+      content:
+        '健身房, Balance GYM, 一對一教練, 飲食控制, 健身課程, 健康餐, 體態改善, 運動訓練, 健康生活, 網站架設, Fire Life',
+    },
+    { property: 'og:title', content: 'Balance GYM - 飲食與訓練的完美平衡' },
+    {
+      property: 'og:description',
+      content:
+        '在 Balance GYM，我們不只是幫你鍛鍊身體，更透過飲食與運動計畫，打造長期健康與自信的生活方式。',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://firelifedev.com/demo/gym' },
+    {
+      property: 'og:image',
+      content: 'https://cdn.firelifedev.com/gym/gym-og-image.png',
+    },
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://firelifedev.com/demo/gym',
+    },
+  ],
+})
+
 const places = [
   {
     name: 'Balance 1店',

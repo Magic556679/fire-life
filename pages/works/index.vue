@@ -91,5 +91,11 @@ const demos = [
     img: 'https://cdn.firelifedev.com/counseling/counselingOgImage%20.png',
     link: '/demo/counseling',
   },
+  {
+    title: 'Balance 健身房首頁',
+    desc: '健身房官網範例。',
+    img: 'https://cdn.firelifedev.com/gym/gym-og-image.png',
+    link: '/demo/gym',
+  },
 ]
 </script>
