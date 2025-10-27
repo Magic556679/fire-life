@@ -191,6 +191,10 @@ import { ref, onMounted } from 'vue'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import SwiperCore from 'swiper'
 
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 definePageMeta({
   layout: 'gym',
 })
