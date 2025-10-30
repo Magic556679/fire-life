@@ -2,7 +2,7 @@
   <div class="border-t border-gray-200 py-4 text-center">
     <ul class="flex justify-center gap-6">
       <li class="flex items-center">
-        <NuxtLink to="/works">網站範例</NuxtLink>
+        <NuxtLink to="/works">作品參考</NuxtLink>
       </li>
       <li class="flex items-center">
         <NuxtLink to="/Service">服務項目</NuxtLink>

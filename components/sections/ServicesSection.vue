@@ -1,54 +1,49 @@
 <template>
-  <div class="mt-8 flex flex-wrap justify-center gap-4 md:flex-nowrap">
-    <div
-      class="w-full rounded-xl bg-white px-5 py-10 transition-shadow duration-700 ease-in-out hover:shadow-md md:max-w-sm"
-    >
-      <h3 class="tracking-wide">網站架設</h3>
-      <div>
+  <div class="py-20 text-center">
+    <div class="mt-2 flex flex-wrap justify-center gap-6 md:flex-nowrap">
+      <NuxtLink
+        v-for="(service, index) in services"
+        :key="index"
+        class="w-full bg-white/50 px-5 py-10 transition-shadow duration-700 ease-in-out hover:shadow-md md:max-w-sm"
+        to="/service"
+      >
+        <h3 class="mb-4 text-xl font-semibold tracking-wide">
+          {{ service.title }}
+        </h3>
         <img
-          src="/images/service-3.svg"
-          alt="網站架設"
-          class="mx-auto mt-2 h-[200px] w-[200px] rounded-md object-contain"
+          :src="service.image"
+          :alt="service.alt"
+          class="mx-auto mb-4 h-[200px] w-[200px] rounded-md object-contain"
         />
-      </div>
-      <p class="leading-r mt-2 text-base">
-        使用獨立
-        VPS，不跟其他人共享資源，提供穩定、快速的網站架設服務，支援各種網站需求。
-      </p>
-    </div>
-    <div
-      class="w-full rounded-xl bg-white px-5 py-10 transition-shadow duration-700 ease-in-out hover:shadow-md md:max-w-sm"
-    >
-      <h3 class="tracking-wide">形象網站</h3>
-      <div>
-        <img
-          src="/images/service-2.svg"
-          alt="形象網站"
-          class="mx-auto mt-2 h-[200px] w-[200px] rounded-md object-contain"
-        />
-      </div>
-      <p class="leading-r mt-2 text-base">
-        使用 Nuxt 前端技術，打造現代化、響應式的形象網站，提升品牌形象。
-      </p>
-    </div>
-    <div
-      class="w-full rounded-xl bg-white px-5 py-10 transition-shadow duration-700 ease-in-out hover:shadow-md md:max-w-sm"
-    >
-      <h3 class="tracking-wide">部落格</h3>
-      <div>
-        <img
-          src="/images/service-1.svg"
-          alt="形象網站"
-          class="mx-auto mt-2 h-[200px] w-[200px] rounded-md object-contain"
-        />
-      </div>
-      <p class="leading-r mt-2 text-base">
-        擁有完整的部落格系統，支援文章發佈與搜尋功能，讓你輕鬆分享內容。
-      </p>
+        <p class="text-base leading-relaxed text-gray-700">
+          {{ service.description }}
+        </p>
+      </NuxtLink>
     </div>
   </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style scoped></style>
+<script setup lang="ts">
+const services = [
+  {
+    title: '網站架設',
+    image: '/images/service-1.svg',
+    alt: '企業/個人網站架設',
+    description:
+      '為企業或個人打造專屬網站，從形象網站到部落格，提供快速與穩定的高效網站。',
+  },
+  {
+    title: '前端功能開發',
+    image: '/images/service-2.svg',
+    alt: '前端功能開發',
+    description:
+      '協助企業專案進行前端功能開發，熟悉 Vue、React，從規劃到上線提供完整前端解決方案。',
+  },
+  {
+    title: '前端轉職諮詢',
+    image: '/images/service-3.svg',
+    alt: '前端轉職諮詢',
+    description:
+      '提供前端轉職規劃，分享前端開發實務經驗，幫助你順利進入前端職場。',
+  },
+]
+</script>

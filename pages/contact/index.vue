@@ -15,7 +15,7 @@
           @mouseleave="imgSrc = '/images/contact.png'"
         >
           <Icon name="i-logos:google-gmail" />
-          magic556679@gmail.com
+          firelifedev@gmail.com
         </a>
 
         <a
@@ -29,6 +29,12 @@
           <Icon name="i-logos:instagram" />
           <span>@sdycfr123</span>
         </a>
+
+        <span class="text-blue-700 hover:text-blue-500">
+          <a href="https://forms.gle/xpEHkvgE3JJRfG5RA" target="_blank">
+            Google 表單填寫
+          </a>
+        </span>
       </div>
     </div>
     <div class="mt-10 lg:mt-0">

@@ -12,20 +12,14 @@
         <div class="max-md:hidden">
           <ul class="flex gap-6">
             <li class="flex items-center">
-              <NuxtLink to="/works">網站範例</NuxtLink>
+              <NuxtLink to="/works">作品參考</NuxtLink>
             </li>
             <li class="flex items-center">
               <NuxtLink to="/service">服務項目</NuxtLink>
             </li>
-            <!-- <li class="  flex items-center">
-              <NuxtLink to="/about">關於我</NuxtLink>
-            </li> -->
             <li class="flex items-center">
               <NuxtLink to="/process">合作流程</NuxtLink>
             </li>
-            <!-- <li class="  flex items-center">
-              <NuxtLink to="/blog">文章列表</NuxtLink>
-            </li> -->
             <li class="flex items-center">
               <NuxtLink to="/contact">聯絡資訊</NuxtLink>
             </li>

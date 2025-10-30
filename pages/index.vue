@@ -12,30 +12,18 @@
           <h2 class="text-3xl font-bold tracking-widest">專屬的網站配置</h2>
           <div class="mt-6 max-w-xs px-6">
             <p class="text-xl leading-9">網站規劃</p>
-            <!-- <p class="mt-2 text-gray-600">
-              採用清爽易讀的設計風格，支援手機與電腦版，提升使用者體驗。
-            </p> -->
           </div>
 
           <div class="max-w-xs px-6">
             <p class="text-xl leading-9">後台內容管理</p>
-            <!-- <p class="mt-2 text-gray-600">
-              自訂登入介面，可編輯文章與圖片，不需懂程式也能自己管理網站。
-            </p> -->
           </div>
 
           <div class="max-w-xs px-6">
             <p class="text-xl leading-9">部落格系統</p>
-            <!-- <p class="mt-2 text-gray-600">
-              建立 SEO 友善的部落格，幫助網站自然成長流量與品牌曝光。
-            </p> -->
           </div>
 
           <div class="max-w-xs px-6">
             <p class="text-xl leading-9">GA4 數據分析</p>
-            <!-- <p class="mt-2 text-gray-600">
-              串接追蹤碼，掌握使用者行為與行銷成效，幫助你優化策略。
-            </p> -->
           </div>
         </div>
 
