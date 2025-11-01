@@ -25,7 +25,7 @@
             id="password"
             v-model="password"
             :ui="{ trailing: 'pe-1' }"
-            type="password"
+            :type="show ? 'text' : 'password'"
             placeholder="請輸入密碼"
           >
             <template #trailing>
