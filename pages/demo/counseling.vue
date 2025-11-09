@@ -129,7 +129,6 @@
               />
             </nuxt-link>
 
-            <!-- 文章文字內容 -->
             <div class="w-full md:w-3/6">
               <nuxt-link :to="`/blog/${post.slug}`">
                 <h3
@@ -145,19 +144,6 @@
                   :key="tag"
                   class="inline-flex items-center gap-1 rounded-full border border-[#E0F3FA] bg-[#F3FBFF] px-3 py-1 text-xs text-[#2C3E50]"
                 >
-                  <!-- <svg
-                    class="h-3 w-3 text-[#5DADE2]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M7 7h.01M4 4h16v16H4V4z"
-                    />
-                  </svg> -->
                   <Icon name="fa-solid:tag" class="h-2 w-2 text-[#5DADE2]" />
                   {{ tag }}
                 </span>

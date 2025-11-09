@@ -30,7 +30,6 @@
         <div
           class="order-first mx-auto w-full md:w-[400px] lg:order-none lg:w-[500px]"
         >
-          <!-- <img src="/images/home-2.jpg" alt="專屬的網站配置" /> -->
           <img src="/images/only-1.svg" alt="專屬的網站配置" />
         </div>
       </div>

@@ -21,6 +21,9 @@
               <NuxtLink to="/process">合作流程</NuxtLink>
             </li>
             <li class="flex items-center">
+              <NuxtLink to="/blog">文章列表</NuxtLink>
+            </li>
+            <li class="flex items-center">
               <NuxtLink to="/contact">聯絡資訊</NuxtLink>
             </li>
           </ul>

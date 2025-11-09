@@ -25,14 +25,15 @@
 </template>
 
 <script setup lang="ts">
-import { h, resolveComponent } from 'vue'
+import { resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
 import { getPosts, deletePost } from '~/api/posts/index'
 import { useRouter } from 'vue-router'
-import type { Post, PostsResponse, DeletePostResponse } from '~/api/posts/types'
+import type { Post, PostsResponse } from '~/api/posts/types'
 
 definePageMeta({
   layout: 'admin',
+  middleware: 'auth',
 })
 
 const router = useRouter()
@@ -50,7 +51,8 @@ const columns: TableColumn<Post>[] = [
         'button',
         {
           class: 'text-blue-500 hover:text-blue-700 cursor-pointer',
-          onClick: () => router.push(`/blog/${row.original.id}`),
+          onClick: () =>
+            router.push(`/blog/${row.original.id}/${row.original.slug}`),
         },
         row.original.id,
       )

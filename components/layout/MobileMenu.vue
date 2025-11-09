@@ -12,13 +12,16 @@
       <nav>
         <ul class="px-4">
           <li class="flex items-center">
-            <NuxtLink to="/demo/personal">作品集</NuxtLink>
+            <NuxtLink to="/works">作品集</NuxtLink>
           </li>
           <li class="flex items-center">
             <NuxtLink to="/service">服務項目</NuxtLink>
           </li>
           <li class="flex items-center">
             <NuxtLink to="/process">合作流程</NuxtLink>
+          </li>
+          <li class="flex items-center">
+            <NuxtLink to="/blog">文章列表</NuxtLink>
           </li>
           <li class="flex items-center">
             <NuxtLink to="/contact">聯絡資訊</NuxtLink>

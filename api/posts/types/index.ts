@@ -9,6 +9,8 @@ export interface Post {
   is_pinned: number
   og_image: string
   status: string
+  created_at?: string
+  updated_at?: string
 }
 
 export interface CreatePostPayload {
