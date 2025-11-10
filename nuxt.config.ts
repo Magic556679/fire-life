@@ -26,8 +26,8 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    enabled: import.meta.env.MODE === 'production',
-    id: 'G-F72V5D6Q4H',
+    // enabled: import.meta.env.MODE === 'production',
+    id: 'G-V06F0B39CN',
   },
 
   css: ['~/assets/css/main.scss', '~/assets/css/tailwind.css'],
