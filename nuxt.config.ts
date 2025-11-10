@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/eslint',
     '@pinia/nuxt',
+    'nuxt-gtag',
   ],
 
   devtools: { enabled: true },
@@ -22,6 +23,11 @@ export default defineNuxtConfig({
     head: {
       link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
     },
+  },
+
+  gtag: {
+    enabled: import.meta.env.MODE === 'production',
+    id: 'G-F72V5D6Q4H',
   },
 
   css: ['~/assets/css/main.scss', '~/assets/css/tailwind.css'],

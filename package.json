@@ -30,6 +30,7 @@
     "eslint": "^9.27.0",
     "lowlight": "^3.3.0",
     "nuxt": "^3.17.4",
+    "nuxt-gtag": "^4.1.0",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.5.0",
     "swiper": "^11.2.10",
