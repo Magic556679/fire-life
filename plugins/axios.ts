@@ -1,11 +1,16 @@
 import axios from 'axios'
 import { useAuthStore } from '~/stores/auth'
 
-const basePath = import.meta.env.VITE_SERVER_BASE_API
-const localhostPath = import.meta.env.VITE_SERVER_LOCALHOST
+// const basePath = import.meta.env.VITE_SERVER_BASE_API
+// const localhostPath = import.meta.env.VITE_SERVER_LOCALHOST
+
+const API_BASE = import.meta.env.DEV
+  ? 'http://127.0.0.1:8000/api/'
+  : 'https://firelifedev.com/api/'
 
 const service = axios.create({
-  baseURL: import.meta.env.DEV ? localhostPath : basePath,
+  // baseURL: import.meta.env.DEV ? localhostPath : basePath,
+  baseURL: API_BASE,
   headers: {
     accept: 'application/json',
   },
