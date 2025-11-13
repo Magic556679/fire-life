@@ -3,11 +3,15 @@ name: Deploy to DigitalOcean
 on:
   push:
     branches:
-      - master # 或你用的分支
+      - master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      NUXT_ENV_API_URL: ${{ secrets.NUXT_ENV_API_URL }}
+      NUXT_ENV_FIREBASE_KEY: ${{ secrets.NUXT_ENV_FIREBASE_KEY }}
+      NODE_ENV: production
 
     steps:
       - name: Checkout code
@@ -23,8 +27,11 @@ jobs:
 
       - name: Build Nuxt 3
         run: npm run build
+        env:
+          NUXT_ENV_API_URL: ${{ secrets.NUXT_ENV_API_URL }}
+          NUXT_ENV_FIREBASE_KEY: ${{ secrets.NUXT_ENV_FIREBASE_KEY }}
+          NODE_ENV: production
 
-      # 只傳 .output 到 VM
       - name: Deploy via rsync over SSH
         uses: burnett01/rsync-deployments@5.2
         with:
