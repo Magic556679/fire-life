@@ -42,6 +42,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd ~/deploy/firelifedev-frontend/fire-life
-            # 指定 pm2 完整路徑
-            /usr/local/bin/pm2 restart nuxt3-portfolio || /usr/local/bin/pm2 start .output/server/index.mjs --name nuxt3-portfolio
+            pm2 restart nuxt3-portfolio || pm2 start .output/server/index.mjs --name nuxt3-portfolio
