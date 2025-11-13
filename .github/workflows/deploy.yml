@@ -25,8 +25,8 @@ jobs:
 
       - name: Clean install dependencies
         run: |
-          rm -rf node_modules
-          npm install --legacy-peer-deps
+          rm -rf node_modules package-lock.json
+          npm ci --legacy-peer-deps --include=dev
 
       - name: Build Nuxt 3
         run: npm run build
