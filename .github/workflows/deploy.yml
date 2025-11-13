@@ -43,5 +43,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/deploy/firelifedev-frontend/fire-life
-            # 指定服務名稱直接 reload
-            pm2 restart nuxt3-portfolio || pm2 start .output/server/index.mjs --name nuxt3-portfolio
+            # 指定 pm2 完整路徑
+            /usr/local/bin/pm2 restart nuxt3-portfolio || /usr/local/bin/pm2 start .output/server/index.mjs --name nuxt3-portfolio
