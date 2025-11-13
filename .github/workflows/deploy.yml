@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       NUXT_ENV_API_URL: ${{ secrets.NUXT_ENV_API_URL }}
       NUXT_ENV_FIREBASE_KEY: ${{ secrets.NUXT_ENV_FIREBASE_KEY }}
@@ -17,13 +17,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Use Node.js 20.10
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.10
+          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules
+          npm install --legacy-peer-deps
 
       - name: Build Nuxt 3
         run: npm run build
