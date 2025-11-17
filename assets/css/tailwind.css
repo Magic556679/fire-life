@@ -7,13 +7,17 @@
   --color-cream-peach: #fff8f1;
 
   --color-person-key: #D0F2FF;
+}
 
-/* tiptap Basic style */
+:root {
+  /* tiptap Basic style */
   --purple-light: rgba(88, 5, 255, .05);
   --black: #2e2b29;
   --white: #ffffff;
   --purple: #6a00f5;
   --purple-contrast: #5800cc;
+  --gray-1: #3D25140D;
+  --gray-3: #3d25141f;
 }
 
 @theme container {
