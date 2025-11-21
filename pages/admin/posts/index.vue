@@ -17,6 +17,8 @@
     <div class="my-10 flex justify-center">
       <UPagination
         v-model:page="page"
+        active-color="neutral"
+        active-variant="subtle"
         :items-per-page="perPage"
         :total="pageTotal"
       />
