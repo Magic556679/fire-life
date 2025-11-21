@@ -10,17 +10,17 @@
           </NuxtLink>
         </div>
         <nav class="hidden items-center gap-8 text-sm font-medium md:flex">
-          <a
+          <NuxtLink
             v-for="item in menuItems"
             :key="item.name"
-            :href="item.link"
-            class="relative transition duration-300"
+            :to="item.link"
+            class="group relative transition duration-300"
           >
             {{ item.name }}
             <span
-              class="absolute -bottom-1 left-0 h-0.5 w-0 bg-green-500 transition-all duration-300 group-hover:w-full"
+              class="bg-orange-light absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"
             ></span>
-          </a>
+          </NuxtLink>
         </nav>
 
         <button type="button" class="md:hidden" @click="toggleMenu">

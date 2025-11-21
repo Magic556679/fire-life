@@ -12,7 +12,7 @@
       <nav
         class="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-center space-y-8 text-lg font-medium"
       >
-        <a
+        <NuxtLink
           v-for="item in menuItems"
           :key="item.name"
           :href="item.link"
@@ -20,7 +20,7 @@
           @click="toggleMenu"
         >
           {{ item.name }}
-        </a>
+        </NuxtLink>
       </nav>
     </div>
   </Teleport>
