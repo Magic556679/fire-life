@@ -1,6 +1,6 @@
 <template>
   <div class="border-t border-gray-200 py-4 text-center">
-    <ul class="flex justify-center gap-6">
+    <ul class="flex justify-center gap-6 text-xs xl:text-base">
       <li class="flex items-center">
         <NuxtLink to="/works">作品參考</NuxtLink>
       </li>

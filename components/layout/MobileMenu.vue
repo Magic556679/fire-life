@@ -9,24 +9,18 @@
           <Icon name="lsicon:close-small-filled" style="color: black" />
         </button>
       </div>
-      <nav>
-        <ul class="px-4">
-          <li class="flex items-center">
-            <NuxtLink to="/works">作品集</NuxtLink>
-          </li>
-          <li class="flex items-center">
-            <NuxtLink to="/service">服務項目</NuxtLink>
-          </li>
-          <li class="flex items-center">
-            <NuxtLink to="/process">合作流程</NuxtLink>
-          </li>
-          <li class="flex items-center">
-            <NuxtLink to="/blog">文章列表</NuxtLink>
-          </li>
-          <li class="flex items-center">
-            <NuxtLink to="/contact">聯絡資訊</NuxtLink>
-          </li>
-        </ul>
+      <nav
+        class="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-center space-y-8 text-lg font-medium"
+      >
+        <a
+          v-for="item in menuItems"
+          :key="item.name"
+          :href="item.link"
+          class="group relative text-gray-800 transition hover:text-green-600"
+          @click="toggleMenu"
+        >
+          {{ item.name }}
+        </a>
       </nav>
     </div>
   </Teleport>
@@ -38,4 +32,12 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const menuItems = [
+  { name: '作品參考', link: '/works' },
+  { name: '服務項目', link: '/service' },
+  { name: '合作流程', link: '/process' },
+  { name: '文章列表', link: '/blog' },
+  { name: '聯絡資訊', link: '/contact' },
+]
 </script>

@@ -231,7 +231,7 @@
           </button>
         </div>
       </div>
-      <editor-content :editor="editor" class="" />
+      <editor-content :editor="editor" class="border border-gray-300" />
     </div>
   </div>
 </template>
