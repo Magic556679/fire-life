@@ -59,7 +59,7 @@
     <!-- Tiptap Editor -->
     <div v-if="editor" class="container">
       <div class="control-group">
-        <div class="button-group">
+        <div class="button-group mb-4">
           <button
             @click="editor.chain().focus().toggleBold().run()"
             :disabled="!editor.can().chain().focus().toggleBold().run()"
@@ -200,8 +200,40 @@
             <Icon name="i-flowbite:undo-solid" />
           </button>
         </div>
+        <div class="button-group">
+          <button
+            @click="
+              editor
+                .chain()
+                .focus()
+                .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+                .run()
+            "
+          >
+            Insert table
+          </button>
+
+          <button @click="editor.chain().focus().deleteTable().run()">
+            Delete table
+          </button>
+          <button @click="editor.chain().focus().mergeOrSplit().run()">
+            Merge or split
+          </button>
+          <button @click="editor.chain().focus().addRowAfter().run()">
+            Add row after
+          </button>
+          <button @click="editor.chain().focus().deleteRow().run()">
+            Delete row
+          </button>
+          <button @click="editor.chain().focus().addColumnAfter().run()">
+            Add column after
+          </button>
+          <button @click="editor.chain().focus().deleteColumn().run()">
+            Delete column
+          </button>
+        </div>
       </div>
-      <editor-content :editor="editor" class="" />
+      <editor-content :editor="editor" class="border border-gray-300" />
     </div>
 
     <!-- <div v-html="articleContent" class="tiptap"></div> -->
@@ -216,6 +248,7 @@ import { uploadImage } from '~/api/upload/index'
 
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
+import { TableKit } from '@tiptap/extension-table'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { all, createLowlight } from 'lowlight'
 import js from 'highlight.js/lib/languages/javascript'
@@ -246,6 +279,9 @@ const editor = useEditor({
     }),
     CodeBlockLowlight.configure({ lowlight }),
     Image,
+    TableKit.configure({
+      table: { resizable: false },
+    }),
   ],
   content: `
         <h2>
