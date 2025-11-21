@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    enabled: import.meta.env.MODE === 'production',
+    // enabled: import.meta.env.MODE === 'production',
     id: 'G-V06F0B39CN',
   },
 
