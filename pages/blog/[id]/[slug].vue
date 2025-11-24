@@ -2,7 +2,7 @@
   <div class="py-14">
     <div class="max-full mx-auto mt-12 bg-white p-8 md:max-w-3xl">
       <div class="mt-10">
-        <div class="text-center">
+        <div class="text-left">
           <h1>
             {{ title }}
           </h1>
