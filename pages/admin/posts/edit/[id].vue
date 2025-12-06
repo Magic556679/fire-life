@@ -275,10 +275,6 @@ const editor = useEditor({
   extensions: [
     StarterKit.configure({
       codeBlock: false,
-      // listItem: false,
-      // bulletList: false,
-      // orderedList: false,
-      // link: false,
     }),
     CodeBlockLowlight.configure({ lowlight }),
     Image,
