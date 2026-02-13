@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useAuthStore } from '~/stores/auth'
+import { useAdminAuthStore } from '~/stores/adminAuth'
+import { useCartStore } from '~/stores/cart'
 
 // const basePath = import.meta.env.VITE_SERVER_BASE_API
 // const localhostPath = import.meta.env.VITE_SERVER_LOCALHOST
@@ -18,11 +19,19 @@ const service = axios.create({
 })
 service.interceptors.request.use(
   config => {
-    const auth = useAuthStore()
-    const token = auth.user?.token
+    const auth = useAdminAuthStore()
+    const cart = useCartStore()
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+    const adminAuth = auth.user?.token
+
+    // 後台登入
+    if (adminAuth) {
+      config.headers.Authorization = `Bearer ${adminAuth}`
+    }
+
+    // 前台購物車
+    if (cart.guestToken) {
+      config.headers['X-Guest-Token'] = cart.guestToken
     }
 
     return config
