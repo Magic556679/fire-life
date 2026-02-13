@@ -84,7 +84,10 @@
           </div>
 
           <div class="my-2">
-            <ProductQuantitySelector v-model:quantity="selectedQuantity" />
+            <ProductQuantitySelector
+              :quantity="selectedQuantity"
+              @update="updateProductQuantity"
+            />
           </div>
 
           <div class="flex items-center gap-4">
@@ -137,8 +140,9 @@ useHead({
   ),
 })
 
-function handleAddToCart(id: number | undefined) {
-  if (id === undefined) return
+const updateProductQuantity = (quantity: number) => {
+  selectedQuantity.value = quantity
+}
 
   console.log(`商品 ID: ${id} 已加入購物車 (待實作)`)
 }
