@@ -57,6 +57,10 @@
 import { ref, computed } from 'vue'
 import { fetchPublicProducts } from '~/api/products'
 import type { ProductsResponse } from '~/api/products'
+import { getCart, addCartItem } from '@/api/cart/index'
+
+const cartStore = useCartStore()
+const toast = useToast()
 
 const page = ref(1)
 const perPage = ref(10)
@@ -96,7 +100,17 @@ function selectCategory(categoryId: string | null) {
   selectedCategory.value = categoryId
 }
 
-function handleAddToCart(id: number) {
-  console.log('addToCart', id)
+async function handleAddToCart(id: number) {
+  await addCartItem(id, 1)
+  const res = await getCart()
+
+  cartStore.setCartData(res)
+
+  toast.add({
+    title: '成功',
+    description: '商品新增成功！',
+    color: 'success',
+    icon: 'i-heroicons-check-circle',
+  })
 }
 </script>

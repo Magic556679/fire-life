@@ -21,6 +21,9 @@
         >
           {{ item.name }}
         </NuxtLink>
+        <ClientOnly>
+          <CartBadge :count="cartStore.cartItemCount" />
+        </ClientOnly>
       </nav>
     </div>
   </Teleport>
@@ -32,12 +35,14 @@ interface Props {
 }
 
 defineProps<Props>()
+const cartStore = useCartStore()
 
 const menuItems = [
   { name: '作品參考', link: '/works' },
   { name: '服務項目', link: '/service' },
   { name: '合作流程', link: '/process' },
   { name: '文章列表', link: '/blog' },
+  { name: '商店', link: '/products' },
   { name: '聯絡資訊', link: '/contact' },
 ]
 </script>

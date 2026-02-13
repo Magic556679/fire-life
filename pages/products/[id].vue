@@ -120,6 +120,9 @@
 import { useRoute } from 'vue-router'
 import { fetchProductById } from '~/api/products'
 import type { Product } from '~/api/products'
+import { addCartItem } from '@/api/cart/index'
+
+const toast = useToast()
 
 const selectedQuantity = ref<number>(1)
 const route = useRoute()
@@ -144,7 +147,15 @@ const updateProductQuantity = (quantity: number) => {
   selectedQuantity.value = quantity
 }
 
-  console.log(`商品 ID: ${id} 已加入購物車 (待實作)`)
+async function handleAddToCart(id: number) {
+  await addCartItem(id, selectedQuantity.value)
+
+  toast.add({
+    title: '成功',
+    description: '商品新增成功！',
+    color: 'success',
+    icon: 'i-heroicons-check-circle',
+  })
 }
 
 function goBack() {

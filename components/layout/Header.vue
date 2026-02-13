@@ -21,6 +21,10 @@
               class="bg-orange-light absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"
             ></span>
           </NuxtLink>
+
+          <ClientOnly>
+            <CartBadge :count="cartStore.cartItemCount" />
+          </ClientOnly>
         </nav>
 
         <button type="button" class="md:hidden" @click="toggleMenu">
@@ -38,12 +42,14 @@
 <script setup lang="ts">
 const isMenu = ref(false)
 const isScrolled = ref(false)
+const cartStore = useCartStore()
 
 const menuItems = [
   { name: '作品參考', link: '/works' },
   { name: '服務項目', link: '/service' },
   { name: '合作流程', link: '/process' },
   { name: '文章列表', link: '/blog' },
+  { name: '商店', link: '/products' },
   { name: '聯絡資訊', link: '/contact' },
 ]
 
