@@ -17,6 +17,11 @@
         <NuxtLink to="/contact">聯絡資訊</NuxtLink>
       </li>
     </ul>
+    <div class="text-xs xl:text-base">
+      <p>聯絡信箱：firelifedev@gmail.com</p>
+      <p>聯絡電話：0930205526</p>
+    </div>
+
     <p class="pt-4 text-xs">© {{ year }} Li Yen Wei. All rights reserved.</p>
   </div>
 </template>
