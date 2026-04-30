@@ -18,6 +18,8 @@
   --purple-contrast: #5800cc;
   --gray-1: #3D25140D;
   --gray-3: #3d25141f;
+
+  --ui-primary: var(--color-orange-accent);
 }
 
 @theme container {
@@ -26,6 +28,7 @@
 
 body {
   @apply text-black;
+  overflow-y: scroll;
 }
 
 
