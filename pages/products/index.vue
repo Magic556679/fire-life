@@ -59,6 +59,33 @@ import { fetchPublicProducts } from '~/api/products'
 import type { ProductsResponse } from '~/api/products'
 import { getCart, addCartItem } from '@/api/cart/index'
 
+useHead({
+  title: 'Fire Life - 商店',
+  htmlAttrs: { lang: 'zh-TW' },
+  meta: [
+    {
+      name: 'description',
+      content: 'Fire Life 商店，提供數位服務與實體商品，探索專屬您的選擇。',
+    },
+    {
+      name: 'keywords',
+      content: '網站架設, 數位商品, 前端開發, 接案, Fire Life 商店',
+    },
+    { property: 'og:title', content: 'Fire Life - 商店' },
+    {
+      property: 'og:description',
+      content: 'Fire Life 商店，提供數位服務與實體商品，探索專屬您的選擇。',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://firelifedev.com/products' },
+    {
+      property: 'og:image',
+      content: 'https://firelifedev.com/images/logo.png',
+    },
+  ],
+  link: [{ rel: 'canonical', href: 'https://firelifedev.com/products' }],
+})
+
 const cartStore = useCartStore()
 const toast = useToast()
 
