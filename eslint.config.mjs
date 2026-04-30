@@ -1,23 +1,5 @@
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs'
+import prettierConfig from 'eslint-config-prettier'
 
-export default withNuxt({
-  rules: {
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: {
-          max: 3,
-        },
-        multiline: {
-          max: 1,
-        },
-      },
-    ],
-    'vue/singleline-html-element-content-newline': 'off',
-    'vue/html-self-closing': 'off',
-    '@stylistic/arrow-parens': ['error', 'as-needed'],
-    '@stylistic/member-delimiter-style': 'off',
-    'prettier/prettier': 'error',
-  },
-})
+export default withNuxt(prettierConfig)

@@ -32,6 +32,9 @@ import { getPosts } from '~/api/posts/index'
 
 useHead({
   title: 'Fire Life - 網站架設與前端技術與接案分享',
+  htmlAttrs: {
+    lang: 'zh-TW',
+  },
   meta: [
     {
       name: 'description',

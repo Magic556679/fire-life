@@ -34,6 +34,28 @@ export const useMenuStore = defineStore('menu', () => {
         },
       ],
     },
+    {
+      label: '電商管理',
+      icon: 'i-lucide-shopping-cart',
+      defaultOpen: true,
+      children: [
+        {
+          label: '商品管理',
+          icon: 'i-lucide-box',
+          to: '/admin/products',
+        },
+        {
+          label: '新增商品',
+          icon: 'i-lucide-plus-square',
+          to: '/admin/products/create',
+        },
+        {
+          label: '訂單管理',
+          icon: 'i-lucide-package',
+          to: '/admin/orders',
+        },
+      ],
+    },
   ])
 
   const findBreadcrumbPath = (

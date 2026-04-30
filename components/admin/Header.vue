@@ -12,7 +12,7 @@ import type { AxiosError } from 'axios'
 
 const route = useRoute()
 const menuStore = useMenuStore()
-const auth = useAuthStore()
+const auth = useAdminAuthStore()
 
 const breadcrumbItems = computed(() => {
   const found = menuStore.findBreadcrumbPath(menuStore.menu, route.path)

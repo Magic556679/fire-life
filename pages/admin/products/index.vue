@@ -27,11 +27,11 @@
 </template>
 
 <script setup lang="ts">
-import { resolveComponent } from 'vue'
+import { ref, watch, h, resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
-import { getPosts, deletePost } from '~/api/posts/index'
 import { useRouter } from 'vue-router'
-import type { Post, PostsResponse } from '~/api/posts/types'
+import { getProducts, deleteProduct } from '~/api/products'
+import type { Product, ProductsResponse } from '~/api/products'
 
 definePageMeta({
   layout: 'admin',
@@ -41,33 +41,44 @@ definePageMeta({
 const router = useRouter()
 const page = ref(1)
 const perPage = ref(10)
-const pageTotal = computed(() => posts.value?.total)
-const data = computed<Post[]>(() => posts.value?.data ?? [])
+const pageTotal = computed(() => products.value?.total)
+const data = computed<Product[]>(() => products.value?.data ?? [])
 
-const columns: TableColumn<Post>[] = [
+const {
+  data: products,
+  pending,
+  refresh,
+} = await useAsyncData<ProductsResponse>('products', () =>
+  getProducts({
+    page: page.value,
+    perPage: perPage.value,
+  }),
+)
+
+const columns: TableColumn<Product>[] = [
   {
     accessorKey: 'id',
-    header: '編號',
+    header: 'ID',
     cell: ({ row }) => {
       return h(
         'button',
         {
           class: 'text-blue-500 hover:text-blue-700 cursor-pointer',
-          onClick: () =>
-            router.push(`/blog/${row.original.id}/${row.original.slug}`),
+          onClick: () => router.push(`/admin/products/edit/${row.original.id}`),
         },
         row.original.id,
       )
     },
   },
-  { accessorKey: 'title', header: '文章標題' },
-  { accessorKey: 'author', header: '作者' },
+  { accessorKey: 'title', header: '商品名稱' },
+  { accessorKey: 'price', header: '價格' },
+  { accessorKey: 'stock', header: '庫存' },
   { accessorKey: 'status', header: '狀態' },
   {
     accessorKey: 'actions',
     header: '操作',
     cell: ({ row }) => {
-      const post = row.original
+      const product = row.original
       const Icon = resolveComponent('Icon')
 
       return h('div', { class: 'flex gap-2' }, [
@@ -75,50 +86,27 @@ const columns: TableColumn<Post>[] = [
           'button',
           {
             class: 'text-blue-500 hover:text-blue-700 cursor-pointer',
-            onClick: () => router.push(`/admin/posts/edit/${post.id}`),
+            onClick: () => router.push(`/admin/products/edit/${product.id}`),
           },
-          [
-            h(Icon, {
-              name: 'i-prime:pen-to-square',
-              class: 'w-6 h-6',
-            }),
-          ],
+          [h(Icon, { name: 'i-prime:pen-to-square', class: 'w-6 h-6' })],
         ),
         h(
           'button',
           {
-            class: 'text-blue-500 hover:text-blue-700 cursor-pointer',
-            onClick: () => {
-              handleDelete(post.id)
-            },
+            class: 'text-red-400 hover:text-red-500 cursor-pointer',
+            onClick: () => handleDelete(product.id),
           },
-          [
-            h(Icon, {
-              name: 'i-material-symbols:delete',
-              class: 'w-6 h-6',
-            }),
-          ],
+          [h(Icon, { name: 'i-material-symbols:delete', class: 'w-6 h-6' })],
         ),
       ])
     },
   },
 ]
 
-const {
-  data: posts,
-  pending,
-  refresh,
-} = await useAsyncData<PostsResponse>('posts', () =>
-  getPosts({
-    page: page.value,
-    perPage: perPage.value,
-  }),
-)
-
 const handleDelete = async (id: number) => {
   if (!confirm('確定要刪除這篇文章嗎？')) return
   try {
-    const { status } = await deletePost(id)
+    const { status } = await deleteProduct(id)
     if (status === 200) {
       await refresh()
     }

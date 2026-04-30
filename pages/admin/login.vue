@@ -72,7 +72,7 @@ definePageMeta({
 const email = ref('')
 const password = ref('')
 const show = ref(false)
-const auth = useAuthStore()
+const auth = useAdminAuthStore()
 
 const submitLogin = async () => {
   try {
