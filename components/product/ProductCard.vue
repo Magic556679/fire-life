@@ -32,13 +32,19 @@
 
       <div>
         <div class="flex justify-center gap-3">
-          <button
-            type="button"
-            class="bg-orange-light hover:bg-orange-accent cursor-pointer px-4 py-2 font-semibold text-balance"
+          <span
+            v-if="isOutOfStock"
+            class="px-4 py-2 text-sm font-semibold text-gray-400"
+          >
+            暫無庫存
+          </span>
+          <UButton
+            v-else
+            class="cursor-pointer"
             @click.prevent="addToCart(props.product.id)"
           >
             加入購物車
-          </button>
+          </UButton>
         </div>
       </div>
     </div>
@@ -46,11 +52,16 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { Product } from '~/api/products'
 
 const props = defineProps<{
   product: Product
 }>()
+
+const isOutOfStock = computed(
+  () => props.product.product_type === 'physical' && !props.product.stock,
+)
 
 const emit = defineEmits<{
   (e: 'add-to-cart', productId: number): void

@@ -27,16 +27,19 @@
       color="neutral"
       variant="outline"
       class="rounded-l-none"
+      :disabled="isAtMax"
       @click="$emit('update', quantity + 1)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{ quantity: number }>()
+const props = defineProps<{ quantity: number; max?: number }>()
 const emit = defineEmits<{
   (e: 'update', value: number): void
 }>()
+
+const isAtMax = computed(() => props.max !== undefined && props.quantity >= props.max)
 
 const handleInput = (value: number) => {
   emit('update', value)

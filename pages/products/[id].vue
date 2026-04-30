@@ -86,24 +86,37 @@
           <div class="my-2">
             <ProductQuantitySelector
               :quantity="selectedQuantity"
+              :max="
+                product.product_type === 'physical'
+                  ? (product.stock ?? undefined)
+                  : undefined
+              "
               @update="updateProductQuantity"
             />
           </div>
 
           <div class="flex items-center gap-4">
-            <button
-              type="button"
-              class="bg-orange-light hover:bg-orange-accent flex-1 transform cursor-pointer rounded-lg px-6 py-3 font-bold text-white shadow-md transition-colors duration-300 hover:scale-[1.02]"
+            <UButton
+              v-if="!isOutOfStock"
+              class="cursor-pointer"
               @click="handleAddToCart(product.id)"
             >
               加入購物車
-            </button>
+            </UButton>
+            <div
+              v-else
+              class="flex-1 rounded-lg bg-gray-100 px-6 py-3 text-center font-bold text-gray-400"
+            >
+              暫無庫存
+            </div>
           </div>
 
           <div class="mt-6 text-sm text-gray-600">
             <p>
-              <strong>庫存狀態:</strong>
-              有庫存
+              <strong>庫存狀態：</strong>
+              <span :class="isOutOfStock ? 'text-red-500' : 'text-green-600'">
+                {{ stockStatusText }}
+              </span>
             </p>
             <p v-if="product.product_type === 'physical'">
               <strong>運送:</strong>
@@ -125,6 +138,17 @@ import { addCartItem } from '@/api/cart/index'
 const toast = useToast()
 
 const selectedQuantity = ref<number>(1)
+const isOutOfStock = computed(
+  () => product.value?.product_type === 'physical' && !product.value?.stock,
+)
+
+const stockStatusText = computed(() => {
+  if (isOutOfStock.value) return '無庫存'
+  if (product.value?.product_type === 'physical')
+    return `剩餘 ${product.value.stock} 件`
+  return '供應中'
+})
+
 const route = useRoute()
 const router = useRouter()
 const productId = computed(() => Number(route.params.id) || null)

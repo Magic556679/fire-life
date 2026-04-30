@@ -96,9 +96,7 @@
 
         <div class="mt-6 flex items-center justify-end">
           <p class="mr-4 text-lg font-bold">總計：$ {{ totalPrice }}</p>
-          <UButton type="button" size="xl" class="px-10" @click="checkout">
-            結帳
-          </UButton>
+          <UButton class="cursor-pointer" @click="checkout">結帳</UButton>
         </div>
       </div>
     </ClientOnly>
@@ -112,7 +110,9 @@ import {
   updateCartItemQuantity,
   deleteCartItem,
 } from '@/api/cart/index'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const cartStore = useCartStore()
 const toast = useToast()
 
@@ -124,6 +124,8 @@ const cartItems = computed(() =>
     price: Number(item.price),
     quantity: item.quantity,
     image: item.product.image?.[0]?.image_url ?? '',
+    stock: item.product.stock,
+    product_type: item.product.product_type,
   })),
 )
 
@@ -174,6 +176,24 @@ const totalPrice = computed(() =>
 )
 
 const checkout = () => {
-  alert('模擬結帳功能')
+  const insufficientItems = cartItems.value.filter(
+    item =>
+      item.product_type === 'physical' &&
+      item.stock !== null &&
+      item.stock !== undefined &&
+      item.quantity > item.stock,
+  )
+
+  if (insufficientItems.length > 0) {
+    toast.add({
+      title: '庫存不足',
+      description: `以下商品庫存不足，請調整數量：${insufficientItems.map(i => i.name).join('、')}`,
+      color: 'error',
+      icon: 'i-heroicons-exclamation-circle',
+    })
+    return
+  }
+
+  router.push('cart/checkout')
 }
 </script>

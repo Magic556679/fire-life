@@ -5,6 +5,8 @@ export const ProductSchema = z.object({
   id: z.number(),
   name: z.string(),
   image: z.array(ProductImageSchema),
+  stock: z.number().nullable().optional(),
+  product_type: z.enum(['physical', 'digital']).optional(),
 })
 
 const CartItemSchema = z.object({
