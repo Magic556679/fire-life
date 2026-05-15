@@ -1,27 +1,40 @@
 <template>
-  <div class="container mx-auto lg:max-w-5xl">
-    <div class="grid gap-2 lg:grid-cols-3">
+  <div class="container mx-auto px-4 py-12 lg:max-w-5xl">
+    <div class="grid gap-12 lg:grid-cols-3">
       <div class="col-span-2">
-        <div v-if="posts">
+        <div v-if="postsData.length > 0">
           <BlogPost v-for="item in postsData" :key="item.id" :item="item" />
-          <div class="my-10 flex justify-center">
+          <div class="mt-10 flex justify-center">
             <UPagination
               v-model:page="page"
               active-color="neutral"
               active-variant="subtle"
               :items-per-page="perPage"
-              :total="postsData.length"
+              :total="posts?.total ?? 0"
             />
           </div>
         </div>
-        <div v-else class="mt-10 bg-white px-4 text-center lg:p-4">
-          尚未新增文章
+        <div v-else class="py-20 text-center text-gray-400">尚未新增文章</div>
+      </div>
+
+      <aside class="hidden lg:block">
+        <div class="sticky top-12">
+          <h3
+            class="mb-4 text-xs font-semibold tracking-widest text-gray-400 uppercase"
+          >
+            熱門標籤
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span
+              v-for="tag in popularTags"
+              :key="tag"
+              class="cursor-pointer rounded-full border border-gray-200 px-3 py-1 text-sm text-gray-500 transition-colors hover:border-gray-400 hover:text-gray-700"
+            >
+              {{ tag }}
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="mt-10 hidden px-7 lg:block">
-        <Icon name="fa-solid:tag" class="h-4 w-4 text-[#5DADE2]" />
-        <span class="pl-2">熱門標籤</span>
-      </div>
+      </aside>
     </div>
   </div>
 </template>
@@ -32,9 +45,7 @@ import { getPosts } from '~/api/posts/index'
 
 useHead({
   title: 'Fire Life - 網站架設與前端技術與接案分享',
-  htmlAttrs: {
-    lang: 'zh-TW',
-  },
+  htmlAttrs: { lang: 'zh-TW' },
   meta: [
     {
       name: 'description',
@@ -56,27 +67,15 @@ useHead({
   link: [{ rel: 'canonical', href: 'https://firelifedev.com/blog' }],
 })
 
+const popularTags = ['前端開發', 'Nuxt', 'Vue', '接案', '網站架設']
+
 const perPage = ref(10)
-let page = ref(1)
-const {
-  data: posts,
-  pending,
-  error,
-  refresh,
-} = await useAsyncData<PostsResponse>(`posts-1`, () =>
-  getPosts({
-    page: page.value,
-    perPage: perPage.value,
-  }),
+const page = ref(1)
+
+const { data: posts } = await useAsyncData<PostsResponse>(
+  () => `posts-page-${page.value}`,
+  () => getPosts({ page: page.value, perPage: perPage.value }),
 )
 
-const postsData = computed(() => {
-  if (!posts.value?.data.length) return []
-
-  return posts.value.data
-})
-
-watch([page], () => {
-  refresh()
-})
+const postsData = computed(() => posts.value?.data ?? [])
 </script>

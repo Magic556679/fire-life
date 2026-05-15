@@ -7,7 +7,7 @@ export interface Post {
   author: string
   is_enabled: number
   is_pinned: number
-  og_image: string
+  og_image: string | null
   status: string
   created_at?: string
   updated_at?: string
@@ -18,6 +18,7 @@ export interface CreatePostPayload {
   slug: string
   metaDescription: string
   content: string
+  og_image?: string | null
 }
 
 export interface CreatePostResponse {

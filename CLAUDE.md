@@ -62,3 +62,11 @@ Resources: `auth`, `posts`, `products` (public + `/admin/products`), `cart`, `or
 
 - 超商取貨（`store_info`）：payload 支援，前台無選擇 UI
 - 購物車在下單後未清空
+
+## Coding Style
+
+完整規則見 `docs/coding-style.md`。重點摘要：
+
+- **Formatter**：Prettier（no semi、single quote、trailing comma all、arrowParens avoid）；Tailwind 類別由 `prettier-plugin-tailwindcss` 自動排序
+- **TypeScript**：禁用 `any`；catch 用 `unknown` + `instanceof Error`；nullable 欄位用 `T | null`
+- **Vue 屬性順序**：`ref/key` → `v-model` → 靜態屬性 → `:動態綁定` → `@事件`
