@@ -27,6 +27,42 @@
       class="mb-4 w-full rounded border border-gray-300 p-2"
     />
 
+    <!-- 封面圖 -->
+    <div class="mb-4">
+      <p class="mb-1 text-sm font-medium text-gray-700">封面圖</p>
+      <div
+        v-if="coverImageUrl"
+        class="relative w-full overflow-hidden rounded border border-gray-200"
+      >
+        <img
+          :src="coverImageUrl"
+          alt="封面圖預覽"
+          class="h-48 w-full object-cover"
+        />
+        <button
+          type="button"
+          class="absolute top-2 right-2 rounded bg-black/50 px-2 py-1 text-xs text-white hover:bg-black/70"
+          @click="removeCoverImage"
+        >
+          移除
+        </button>
+      </div>
+      <label
+        v-else
+        class="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed border-gray-300 text-sm text-gray-400 hover:border-gray-400"
+      >
+        <span v-if="coverImageUploading">上傳中...</span>
+        <span v-else>點擊上傳封面圖</span>
+        <input
+          ref="coverImageInput"
+          type="file"
+          accept="image/*"
+          class="hidden"
+          @change="handleCoverImageUpload"
+        />
+      </label>
+    </div>
+
     <!-- 做成元件 -->
     <UModal v-model:open="showModal" title="設定圖片資訊">
       <template #body>
@@ -59,25 +95,25 @@
       <div class="control-group">
         <div class="button-group mb-4">
           <button
-            @click="editor.chain().focus().toggleBold().run()"
             :disabled="!editor.can().chain().focus().toggleBold().run()"
             :class="{ 'is-active': editor.isActive('bold') }"
+            @click="editor.chain().focus().toggleBold().run()"
           >
             Bold
           </button>
 
           <button
-            @click="editor.chain().focus().toggleItalic().run()"
             :disabled="!editor.can().chain().focus().toggleItalic().run()"
             :class="{ 'is-active': editor.isActive('italic') }"
+            @click="editor.chain().focus().toggleItalic().run()"
           >
             Italic
           </button>
 
           <button
-            @click="editor.chain().focus().toggleStrike().run()"
             :disabled="!editor.can().chain().focus().toggleStrike().run()"
             :class="{ 'is-active': editor.isActive('strike') }"
+            @click="editor.chain().focus().toggleStrike().run()"
           >
             Strike
           </button>
@@ -85,115 +121,115 @@
           <!-- upload image  -->
           <button @click="triggerFileInput">Upload Image</button>
           <input
-            type="file"
-            @change="handleUploadImage"
-            class="hidden"
             ref="fileInput"
+            type="file"
+            class="hidden"
+            @change="handleUploadImage"
           />
           <button @click="addImage">Set Image URL</button>
 
           <button
-            @click="editor.chain().focus().toggleCode().run()"
             :disabled="!editor.can().chain().focus().toggleCode().run()"
             :class="{ 'is-active': editor.isActive('code') }"
+            @click="editor.chain().focus().toggleCode().run()"
           >
             <Icon name="i-ic:baseline-code" />
           </button>
 
           <button
-            @click="editor.chain().focus().toggleCodeBlock().run()"
             :class="{ 'is-active': editor.isActive('codeBlock') }"
+            @click="editor.chain().focus().toggleCodeBlock().run()"
           >
             Code block
           </button>
 
           <button
-            @click="editor.chain().focus().setParagraph().run()"
             :class="{ 'is-active': editor.isActive('paragraph') }"
+            @click="editor.chain().focus().setParagraph().run()"
           >
             Paragraph
           </button>
 
           <button
-            @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
             :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+            @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
           >
             H1
           </button>
 
           <button
-            @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
             :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
+            @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
           >
             H2
           </button>
 
           <button
-            @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
             :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
+            @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
           >
             H3
           </button>
 
           <button
-            @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
             :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
+            @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
           >
             H4
           </button>
 
           <button
-            @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
             :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }"
+            @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
           >
             H5
           </button>
 
           <button
-            @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
             :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }"
+            @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
           >
             H6
           </button>
 
           <button
-            @click="editor.chain().focus().toggleBulletList().run()"
             :class="{ 'is-active': editor.isActive('bulletList') }"
+            @click="editor.chain().focus().toggleBulletList().run()"
           >
             Bullet list
           </button>
 
           <button
-            @click="editor.chain().focus().toggleOrderedList().run()"
             :class="{ 'is-active': editor.isActive('orderedList') }"
+            @click="editor.chain().focus().toggleOrderedList().run()"
           >
             Ordered list
           </button>
 
           <button
-            @click="setLink"
             :class="{ 'is-active': editor.isActive('link') }"
+            @click="setLink"
           >
             Set link
           </button>
 
           <button
-            @click="editor.chain().focus().unsetLink().run()"
             :disabled="!editor.isActive('link')"
+            @click="editor.chain().focus().unsetLink().run()"
           >
             Unset link
           </button>
 
           <button
-            @click="editor.chain().focus().undo().run()"
             :disabled="!editor.can().chain().focus().undo().run()"
+            @click="editor.chain().focus().undo().run()"
           >
             <Icon name="i-flowbite:undo-outline" />
           </button>
 
           <button
-            @click="editor.chain().focus().redo().run()"
             :disabled="!editor.can().chain().focus().redo().run()"
+            @click="editor.chain().focus().redo().run()"
           >
             <Icon name="i-flowbite:undo-solid" />
           </button>
@@ -257,10 +293,7 @@ definePageMeta({
 const route = useRoute()
 const id = Number(route.params.id)
 
-const { data, pending, error, refresh } = useAsyncData<ApiResponse<Post>>(
-  'post',
-  () => getPost(id),
-)
+const { data } = useAsyncData<ApiResponse<Post>>('post', () => getPost(id))
 
 const lowlight = createLowlight(all)
 
@@ -270,6 +303,29 @@ lowlight.register('js', js)
 const title = ref('')
 const slug = ref('')
 const metaDescription = ref('')
+const coverImageUrl = ref<string | null>(null)
+const coverImageUploading = ref(false)
+const coverImageInput = ref<HTMLInputElement | null>(null)
+
+async function handleCoverImageUpload(event: Event) {
+  const target = event.target as HTMLInputElement | null
+  const file = target?.files?.[0]
+  if (!file) return
+  coverImageUploading.value = true
+  try {
+    const { data } = await uploadImage(file)
+    coverImageUrl.value = data.url
+  } catch {
+    alert('封面圖上傳失敗')
+  } finally {
+    coverImageUploading.value = false
+    if (target) target.value = ''
+  }
+}
+
+function removeCoverImage() {
+  coverImageUrl.value = null
+}
 
 const editor = useEditor({
   extensions: [
@@ -367,19 +423,20 @@ function confirmImage() {
 
 async function submitArticle() {
   try {
-    const { data, status } = await updatePost(id, {
+    const { status } = await updatePost(id, {
       title: title.value,
       slug: slug.value,
       meta_description: metaDescription.value,
       content: editor.value?.getHTML() || '',
+      og_image: coverImageUrl.value,
     })
 
     if (status) {
       navigateTo('/admin/posts')
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error(err)
-    alert('發佈失敗: ' + err.response?.data?.message || err.message)
+    alert('發佈失敗: ' + (err instanceof Error ? err.message : '未知錯誤'))
   }
 }
 
@@ -391,6 +448,7 @@ watchEffect(async () => {
     title.value = data.value.data.title
     slug.value = data.value.data.slug || ''
     metaDescription.value = data.value.data.meta_description || ''
+    coverImageUrl.value = data.value.data.og_image || null
   }
 })
 

@@ -14,6 +14,13 @@
           </div>
         </div>
       </div>
+      <div v-if="post?.og_image" class="my-6">
+        <img
+          :src="post.og_image"
+          :alt="title"
+          class="w-full rounded-lg object-cover"
+        />
+      </div>
       <div v-html="data?.data.content" class="tiptap"></div>
     </div>
   </div>
@@ -27,7 +34,7 @@ const route = useRoute()
 const id = Number(route.params.id)
 const slugParam = route.params.slug
 
-const { data } = await useAsyncData<ApiResponse<Post>>('post', () =>
+const { data } = await useAsyncData<ApiResponse<Post>>(`post-${id}`, () =>
   getPost(id),
 )
 
