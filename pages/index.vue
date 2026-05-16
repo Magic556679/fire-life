@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-cream-peach -mt-16 px-4">
+  <div class="-mt-16 px-4">
     <section class="pt-10 text-center">
-      <h2 class="tracking-widest">服務項目</h2>
+      <h2 class="text-3xl font-bold tracking-widest">服務項目</h2>
       <sections-services-section />
     </section>
     <section class="container mx-auto mt-40 text-center lg:max-w-5xl">
