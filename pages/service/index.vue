@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto lg:max-w-5xl">
-    <h2 class="my-10 text-center text-2xl font-bold tracking-widest">
+    <h2 class="my-10 text-center text-3xl font-bold tracking-widest">
       服務項目
     </h2>
     <sections-services-section />

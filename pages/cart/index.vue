@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto mt-7 lg:max-w-5xl">
-    <h2 class="my-10 text-center font-bold tracking-widest">購物車</h2>
+    <h2 class="my-10 text-center text-3xl font-bold tracking-widest">購物車</h2>
     <ClientOnly>
       <div v-if="cartItems.length === 0" class="text-center text-gray-500">
         購物車目前是空的。

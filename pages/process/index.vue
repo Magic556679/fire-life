@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-6 lg:max-w-5xl">
     <h2
-      class="my-10 text-center text-3xl font-bold tracking-wide text-gray-900"
+      class="my-10 text-center text-3xl font-bold tracking-widest"
     >
       合作流程
     </h2>
