@@ -1,12 +1,14 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme {        
+@theme {
   --color-orange-light: #ffcf99;
   --color-orange-accent: #ffb07f;
   --color-cream-peach: #fff8f1;
 
   --color-person-key: #D0F2FF;
+
+  --font-sans: 'Noto Sans TC', SF Pro TC, PingFang TC, Helvetica Neue, Arial, sans-serif;
 }
 
 :root {
@@ -27,6 +29,7 @@
 }
 
 body {
+  font-family: var(--font-sans);
   @apply text-black;
   overflow-y: scroll;
 }

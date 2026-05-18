@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
+    '@nuxt/fonts',
     '@nuxt/test-utils',
     '@nuxt/scripts',
     '@nuxt/image',
@@ -12,6 +13,16 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-gtag',
   ],
+
+  fonts: {
+    families: [
+      {
+        name: 'Noto Sans TC',
+        provider: 'google',
+        weights: [300, 400, 500, 700],
+      },
+    ],
+  },
 
   devtools: { enabled: true },
 
