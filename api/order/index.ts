@@ -46,24 +46,6 @@ export const checkoutOrder = async (orderNo: string): Promise<string> => {
   }
 }
 
-// export const getAdminOrderById = async (
-//   id: string | number,
-// ): Promise<AdminOrderDetail> => {
-//   const { $api } = useNuxtApp()
-//   try {
-//     const res = await $api.get(`/admin/orders/${id}`)
-//     const result = adminOrderDetailResponseSchema.safeParse(res.data)
-//     if (!result.success) {
-//       console.error('Zod validation failed:', result.error.issues)
-//       throw new Error('API 回傳資料格式不正確')
-//     }
-//     return result.data.data
-//   } catch (error) {
-//     console.error('API request failed:', error)
-//     throw error
-//   }
-// }
-
 export const getAdminOrderById = async (
   id: string | number,
 ): Promise<AdminOrderDetail> => {
