@@ -52,7 +52,7 @@ Functions in `api/` use Axios directly and validate responses with Zod schemas. 
 
 Base URL: `http://127.0.0.1:8000/api/` (dev) / `https://firelifedev.com/api/` (prod)
 
-Resources: `auth`, `posts`, `products` (public + `/admin/products`), `cart`, `order`, `upload`. Full spec in `docs/api.md` and `docs/sdd.md`.
+Resources: `auth`, `posts`, `products` (public + `/admin/products`), `cart`, `order`, `upload`. Full spec in `.claude/rules/api-reference.md` and `.claude/rules/architecture.md`.
 
 ### Payment Flow
 
@@ -65,7 +65,7 @@ Resources: `auth`, `posts`, `products` (public + `/admin/products`), `cart`, `or
 
 ## Coding Style
 
-完整規則見 `docs/coding-style.md`。重點摘要：
+完整規則見 `.claude/rules/coding-style.md`。重點摘要：
 
 - **Formatter**：Prettier（no semi、single quote、trailing comma all、arrowParens avoid）；Tailwind 類別由 `prettier-plugin-tailwindcss` 自動排序
 - **TypeScript**：禁用 `any`；catch 用 `unknown` + `instanceof Error`；nullable 欄位用 `T | null`

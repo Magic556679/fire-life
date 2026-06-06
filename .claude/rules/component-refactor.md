@@ -1,4 +1,4 @@
-# Component 拆分建議
+# Component 拆分待辦
 
 分析 `pages/`（不含 `demo/`）中可提取為共用元件的重複程式碼。
 
